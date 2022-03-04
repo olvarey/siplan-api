@@ -32,17 +32,17 @@ public class UnidadOrganizativa implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_unidad_org")
-	private Integer idUnidadOrg;
+	@Column(name = "id_unidad_organizativa")
+	private Long idUnidadOrganizativa;
 
-	@Column(name = "nombre_unidad_org", nullable = false, length = 500)
-	private String nombreUnidadOrg;
+	@Column(name = "nombre_unidad_organizativa", nullable = false, length = 500)
+	private String nombreUnidadOrganizativa;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_org", referencedColumnName = "id_org", foreignKey = @ForeignKey(name = "fk_unidad_org_organizacion"))
+	@JoinColumn(name = "id_organizacion", referencedColumnName = "id_organizacion", foreignKey = @ForeignKey(name = "fk_unidad_org_organizacion"))
 	private Organizacion organizacion;
 
 	@ManyToOne(optional = true)
-	@JoinColumn(name = "id_unidad_superior", referencedColumnName = "id_unidad_org", foreignKey = @ForeignKey(name = "fk_unidad_org_unidad_org"))
+	@JoinColumn(name = "id_unidad_superior", referencedColumnName = "id_unidad_organizativa", foreignKey = @ForeignKey(name = "fk_unidad_org_unidad_org"))
 	private UnidadOrganizativa unidadSuperior;
 }

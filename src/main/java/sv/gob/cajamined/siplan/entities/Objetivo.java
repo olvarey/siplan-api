@@ -2,6 +2,7 @@ package sv.gob.cajamined.siplan.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,23 +37,30 @@ public class Objetivo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_obj")
-	private Integer idObj;
+	@Column(name = "id_objetivo")
+	private Long idObjetivo;
 
-	@Column(name = "descripcion_obj", length = 500, nullable = false)
-	private String descripcionObj;
+	@Column(name = "nombre_objetivo", length = 300, nullable = false)
+	private String nombreObjetivo;
 
-	@Column(name = "estrategico_obj", nullable = false)
-	private Boolean estrategicoObj;
+	@Column(name = "descripcion_objetivo", length = 500)
+	private String descripcionObjetivo;
 
-	@Column(name = "fecha_creacion_obj", nullable = false)
+	@Column(name = "fecha_creacion_objetivo", nullable = false)
 	@Temporal(TemporalType.DATE)
-	private Date fechaCreacionObj;
+	private Date fechaCreacionObjetivo;
 
-	@Column(name = "usuario_creacion_obj", nullable = false, length = 300)
-	private String usuarioCreacionObj;
+	@Column(name = "usuario_creacion_objetivo", nullable = false, length = 300)
+	private String usuarioCreacionObjetivo;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_org", referencedColumnName = "id_org", foreignKey = @ForeignKey(name = "fk_objetivo_organizacion"))
+	@JoinColumn(name = "id_organizacion", referencedColumnName = "id_organizacion", foreignKey = @ForeignKey(name = "fk_objetivo_organizacion"))
 	private Organizacion organizacion;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "id_tipo_objetivo", referencedColumnName = "id_tipo_objetivo", foreignKey = @ForeignKey(name = "fk_objetivo_tipo_objetivo"))
+	private TipoObjetivo tipoObjetivo;
+
+	@ManyToMany(mappedBy = "objetivoSet")
+	private Set<Plan> planSet;
 }

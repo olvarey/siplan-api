@@ -32,20 +32,20 @@ public class Organizacion implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_org")
-	private Integer idOrg;
+	@Column(name = "id_organizacion")
+	private Long idOrganizacion;
 
-	@Column(name = "nombre_org", nullable = false, length = 500)
-	private String nombreOrg;
+	@Column(name = "nombre_organizacion", nullable = false, length = 500)
+	private String nombreOrganizacion;
 
-	@Column(name = "descripcion_org", columnDefinition = "text")
-	private String descripcionOrg;
+	@Column(name = "descripcion_organizacion", length = 500)
+	private String descripcionOrganizacion;
 
-	@Column(name = "mision_org", columnDefinition = "text not null")
-	private String misionOrg;
+	@Column(name = "mision_organizacion", length = 500)
+	private String misionOrganizacion;
 
-	@Column(name = "vision_org", columnDefinition = "text not null")
-	private String visionOrg;
+	@Column(name = "vision_organizacion", length = 500)
+	private String visionOrganizacion;
 
 	@OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)
 	private List<Objetivo> objetivoList;
