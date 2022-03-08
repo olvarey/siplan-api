@@ -2,8 +2,9 @@ package sv.gob.cajamined.siplan.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -11,8 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -61,6 +62,9 @@ public class Objetivo implements Serializable {
 	@JoinColumn(name = "id_tipo_objetivo", referencedColumnName = "id_tipo_objetivo", foreignKey = @ForeignKey(name = "fk_objetivo_tipo_objetivo"))
 	private TipoObjetivo tipoObjetivo;
 
-	@ManyToMany(mappedBy = "objetivoSet")
-	private Set<Plan> planSet;
+	@OneToMany(mappedBy = "objetivo", cascade = CascadeType.ALL)
+	private List<Eje> ejeList;
+
+//	@ManyToMany(mappedBy = "objetivoSet")
+//	private Set<Plan> planSet;
 }

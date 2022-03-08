@@ -54,9 +54,9 @@ public class Plan implements Serializable {
 	@Column(name = "usuario_creacion_plan", nullable = false, length = 300)
 	private String usuarioCreacionPlan;
 
-	@ManyToMany
-	@JoinTable(name = "plan_objetivo", schema = "siplan", joinColumns = @JoinColumn(name = "id_plan", foreignKey = @ForeignKey(name = "fk_plan_objetivo_plan")), inverseJoinColumns = @JoinColumn(name = "id_objetivo", foreignKey = @ForeignKey(name = "fk_plan_objetivo_objetivo")))
-	private Set<Objetivo> objetivoSet;
+//	@ManyToMany
+//	@JoinTable(name = "plan_objetivo", schema = "siplan", joinColumns = @JoinColumn(name = "id_plan", foreignKey = @ForeignKey(name = "fk_plan_objetivo_plan")), inverseJoinColumns = @JoinColumn(name = "id_objetivo", foreignKey = @ForeignKey(name = "fk_plan_objetivo_objetivo")))
+//	private Set<Objetivo> objetivoSet;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_tipo_plan", referencedColumnName = "id_tipo_plan", foreignKey = @ForeignKey(name = "fk_plan_tipo_plan"))
