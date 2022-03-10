@@ -2,12 +2,19 @@ package sv.gob.cajamined.siplan.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,8 +54,8 @@ public class Accion implements Serializable {
 	@Column(name = "nombre_responsable_accion", length = 500)
 	private String nombreResponsableAccion;
 
-	@Column(name = "numero_acciones_anual_accion", nullable = false)
-	private Integer numeroAccionesAnualAccion;
+	@Column(name = "numero_acciones_anuales_accion", nullable = false)
+	private Integer numeroAccionesAnualesAccion;
 
 	@Column(name = "observacion", length = 500)
 	private String observacion;
@@ -60,4 +67,16 @@ public class Accion implements Serializable {
 	@Column(name = "usuario_creacion_accion", nullable = false, length = 300)
 	private String usuarioCreacionAccion;
 
+	@ManyToOne(optional = false)
+	@JoinColumns(foreignKey = @ForeignKey(name = "fk_accion_anio_resultado"), value = {
+			@JoinColumn(name = "id_anio", referencedColumnName = "id_anio"),
+			@JoinColumn(name = "id_resultado", referencedColumnName = "id_resultado") })
+	private AnioResultado anioResultado;
+
+	@OneToMany(mappedBy = "accion", cascade = CascadeType.ALL)
+	private List<Seguimiento> seguimientoList;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "id_financiamiento", referencedColumnName = "id_financiamiento", foreignKey = @ForeignKey(name = "fk_accion_financiamiento"))
+	private Financiamiento financiamiento;
 }

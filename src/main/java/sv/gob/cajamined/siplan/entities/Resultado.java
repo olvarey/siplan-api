@@ -2,7 +2,9 @@ package sv.gob.cajamined.siplan.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,7 +39,7 @@ public class Resultado implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_resultado")
-	private Integer idResultado;
+	private Long idResultado;
 
 	@Column(name = "nombre_resultado", length = 500, nullable = false)
 	private String nombreResultado;
@@ -57,5 +60,12 @@ public class Resultado implements Serializable {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_eje", referencedColumnName = "id_eje", foreignKey = @ForeignKey(name = "fk_eje_resultado"))
 	private Eje eje;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "id_indicador", referencedColumnName = "id_indicador", foreignKey = @ForeignKey(name = "fk_resultado_indicador"))
+	private Indicador indicador;
+
+	@OneToMany(mappedBy = "resultado", cascade = CascadeType.ALL)
+	private List<AnioResultado> anioResultadoList;
 
 }
