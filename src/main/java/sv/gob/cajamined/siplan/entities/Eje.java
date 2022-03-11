@@ -39,7 +39,7 @@ public class Eje implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_eje")
-	private Integer idEje;
+	private Long idEje;
 
 	@Column(name = "nombre_eje", length = 300, nullable = false)
 	private String nombreEje;

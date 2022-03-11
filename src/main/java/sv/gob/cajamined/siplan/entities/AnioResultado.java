@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -34,8 +35,11 @@ public class AnioResultado implements Serializable {
 	@EmbeddedId
 	private AnioResultadoPK idAnioResultadoPK;
 
+	@Column(name = "activo", nullable = false)
+	private Boolean activo;
+
 	@ManyToOne
-	@MapsId("idanio")
+	@MapsId("idAnio")
 	@JoinColumn(name = "id_anio", referencedColumnName = "id_anio", foreignKey = @ForeignKey(name = "fk_anio_resultado_anio"))
 	private Anio anio;
 

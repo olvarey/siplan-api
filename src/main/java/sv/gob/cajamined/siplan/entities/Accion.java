@@ -79,4 +79,8 @@ public class Accion implements Serializable {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_financiamiento", referencedColumnName = "id_financiamiento", foreignKey = @ForeignKey(name = "fk_accion_financiamiento"))
 	private Financiamiento financiamiento;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "id_linea_trabajo", referencedColumnName = "id_linea_trabajo", foreignKey = @ForeignKey(name = "fk_accion_linea_trabajo"))
+	private LineaTrabajo lineaTrabajo;
 }
