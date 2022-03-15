@@ -7,6 +7,6 @@ import sv.gob.cajamined.siplan.entities.AnioResultado;
 import sv.gob.cajamined.siplan.entities.AnioResultadoPK;
 
 @Repository
-public interface AnioResultadoRepo extends JpaRepository<AnioResultado, AnioResultadoPK>{
+public interface AnioResultadoRepo extends JpaRepository<AnioResultado, AnioResultadoPK> {
 
 }
