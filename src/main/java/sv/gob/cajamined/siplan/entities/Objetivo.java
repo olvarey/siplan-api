@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -56,6 +58,7 @@ public class Objetivo implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_organizacion", referencedColumnName = "id_organizacion", foreignKey = @ForeignKey(name = "fk_objetivo_organizacion"))
+	@JsonIgnoreProperties("objetivoList")
 	private Organizacion organizacion;
 
 	@ManyToOne(optional = false)

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -48,6 +50,7 @@ public class Organizacion implements Serializable {
 	private String visionOrganizacion;
 
 	@OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("organizacion")
 	private List<Objetivo> objetivoList;
 
 	@OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)

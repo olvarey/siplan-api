@@ -1,6 +1,7 @@
 package sv.gob.cajamined.siplan.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +27,27 @@ public class ObjetivoController {
 	}
 
 	@GetMapping(value = "objetivos/{idObjetivo}")
-	private Objetivo getObjetivoById(@PathVariable Long idObjetivo) {
-		return objetivoRepo.getById(idObjetivo);
+	private Optional<Objetivo> getObjetivoById(@PathVariable Long idObjetivo) {
+		Optional<Objetivo> objetivo = objetivoRepo.findById(idObjetivo);
+		return (objetivo != null) ? objetivo : null;
+	}
+
+	@GetMapping(value = "objetivos/organizaciones/{idOrganizacion}")
+	private List<Objetivo> getObjetivosByOrganizacion(@PathVariable Long idOrganizacion) {
+		return objetivoRepo.findByOrganizacionIdOrganizacion(idOrganizacion);
+	}
+
+	@GetMapping(value = "objetivos/organizaciones/{idOrganizacion}/tipos-objetivo/{idTipoObjetivo}")
+	private List<Objetivo> getObjetivosByOrganizacionAndTipoObjetivo(@PathVariable Long idOrganizacion,
+			@PathVariable Long idTipoObjetivo) {
+		return objetivoRepo.findByOrganizacionIdOrganizacionAndTipoObjetivoIdTipoObjetivo(idOrganizacion,
+				idTipoObjetivo);
+	}
+
+	@GetMapping(value = "objetivos/tipos-objetivo/{idTipoObjetivo}")
+	private List<Objetivo> getObjetivosByTipoObjetivo(@PathVariable Long idTipoObjetivo) {
+		List<Objetivo> objetivosPorTipo = objetivoRepo.findByTipoObjetivoIdTipoObjetivo(idTipoObjetivo);
+		return objetivosPorTipo;
 	}
 
 	@PostMapping(value = "objetivos")
