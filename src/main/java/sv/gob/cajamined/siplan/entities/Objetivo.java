@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -63,9 +64,11 @@ public class Objetivo implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_tipo_objetivo", referencedColumnName = "id_tipo_objetivo", foreignKey = @ForeignKey(name = "fk_objetivo_tipo_objetivo"))
+	@JsonIgnore
 	private TipoObjetivo tipoObjetivo;
 
 	@OneToMany(mappedBy = "objetivo", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("objetivo")
 	private List<Eje> ejeList;
 
 //	@ManyToMany(mappedBy = "objetivoSet")

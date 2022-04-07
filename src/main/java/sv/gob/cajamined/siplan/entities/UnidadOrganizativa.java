@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -40,6 +42,7 @@ public class UnidadOrganizativa implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_organizacion", referencedColumnName = "id_organizacion", foreignKey = @ForeignKey(name = "fk_unidad_org_organizacion"))
+	@JsonIgnoreProperties("unidadOrganizativaList")
 	private Organizacion organizacion;
 
 	@ManyToOne(optional = true)

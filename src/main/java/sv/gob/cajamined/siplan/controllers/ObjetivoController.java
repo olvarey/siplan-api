@@ -28,26 +28,17 @@ public class ObjetivoController {
 
 	@GetMapping(value = "objetivos/{idObjetivo}")
 	private Optional<Objetivo> getObjetivoById(@PathVariable Long idObjetivo) {
-		Optional<Objetivo> objetivo = objetivoRepo.findById(idObjetivo);
-		return (objetivo != null) ? objetivo : null;
-	}
-
-	@GetMapping(value = "objetivos/organizaciones/{idOrganizacion}")
-	private List<Objetivo> getObjetivosByOrganizacion(@PathVariable Long idOrganizacion) {
-		return objetivoRepo.findByOrganizacionIdOrganizacion(idOrganizacion);
-	}
-
-	@GetMapping(value = "objetivos/organizaciones/{idOrganizacion}/tipos-objetivo/{idTipoObjetivo}")
-	private List<Objetivo> getObjetivosByOrganizacionAndTipoObjetivo(@PathVariable Long idOrganizacion,
-			@PathVariable Long idTipoObjetivo) {
-		return objetivoRepo.findByOrganizacionIdOrganizacionAndTipoObjetivoIdTipoObjetivo(idOrganizacion,
-				idTipoObjetivo);
+		return objetivoRepo.findById(idObjetivo);
 	}
 
 	@GetMapping(value = "objetivos/tipos-objetivo/{idTipoObjetivo}")
 	private List<Objetivo> getObjetivosByTipoObjetivo(@PathVariable Long idTipoObjetivo) {
-		List<Objetivo> objetivosPorTipo = objetivoRepo.findByTipoObjetivoIdTipoObjetivo(idTipoObjetivo);
-		return objetivosPorTipo;
+		return objetivoRepo.findByTipoObjetivoIdTipoObjetivo(idTipoObjetivo);
+	}
+
+	@GetMapping(value = "organizaciones/{idOrganizacion}/objetivos")
+	private List<Objetivo> getObjetivosByOrganizacion(@PathVariable Long idOrganizacion) {
+		return objetivoRepo.findByOrganizacionIdOrganizacion(idOrganizacion);
 	}
 
 	@PostMapping(value = "objetivos")

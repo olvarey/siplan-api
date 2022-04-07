@@ -11,9 +11,8 @@ import sv.gob.cajamined.siplan.entities.Organizacion;
 @Repository
 public interface ObjetivoRepo extends JpaRepository<Objetivo, Long> {
 
+	List<Objetivo> findByTipoObjetivoIdTipoObjetivo(Long idTipoObjetivo);
+
 	List<Objetivo> findByOrganizacionIdOrganizacion(Long idOrganizacion);
 
-	List<Objetivo> findByOrganizacionIdOrganizacionAndTipoObjetivoIdTipoObjetivo(Long idOrganizacion, Long idTipoObjetivo);
-
-	List<Objetivo> findByTipoObjetivoIdTipoObjetivo(Long idTipoObjetivo);
 }
