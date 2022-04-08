@@ -18,6 +18,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -59,13 +62,16 @@ public class Resultado implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_eje", referencedColumnName = "id_eje", foreignKey = @ForeignKey(name = "fk_eje_resultado"))
+	@JsonBackReference
 	private Eje eje;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_indicador", referencedColumnName = "id_indicador", foreignKey = @ForeignKey(name = "fk_resultado_indicador"))
+	@JsonBackReference
 	private Indicador indicador;
 
 	@OneToMany(mappedBy = "resultado", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<AnioResultado> anioResultadoList;
 
 }

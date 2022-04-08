@@ -18,6 +18,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -56,8 +59,10 @@ public class Eje implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_objetivo", referencedColumnName = "id_objetivo", foreignKey = @ForeignKey(name = "fk_eje_objetivo"))
+	@JsonBackReference
 	private Objetivo objetivo;
 
 	@OneToMany(mappedBy = "eje", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<Resultado> resultadoList;
 }

@@ -18,8 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -59,16 +59,16 @@ public class Objetivo implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_organizacion", referencedColumnName = "id_organizacion", foreignKey = @ForeignKey(name = "fk_objetivo_organizacion"))
-	@JsonIgnoreProperties("objetivoList")
+	@JsonBackReference
 	private Organizacion organizacion;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_tipo_objetivo", referencedColumnName = "id_tipo_objetivo", foreignKey = @ForeignKey(name = "fk_objetivo_tipo_objetivo"))
-	@JsonIgnore
+	@JsonBackReference
 	private TipoObjetivo tipoObjetivo;
 
 	@OneToMany(mappedBy = "objetivo", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("objetivo")
+	@JsonManagedReference
 	private List<Eje> ejeList;
 
 //	@ManyToMany(mappedBy = "objetivoSet")
