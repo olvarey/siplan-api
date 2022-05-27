@@ -1,17 +1,22 @@
 package sv.gob.cajamined.siplan;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import sv.gob.cajamined.siplan.entities.Objetivo;
 import sv.gob.cajamined.siplan.entities.Organizacion;
 import sv.gob.cajamined.siplan.entities.Rol;
+import sv.gob.cajamined.siplan.entities.TipoObjetivo;
 import sv.gob.cajamined.siplan.entities.Usuario;
+import sv.gob.cajamined.siplan.repositories.ObjetivoRepo;
 import sv.gob.cajamined.siplan.repositories.OrganizacionRepo;
 import sv.gob.cajamined.siplan.repositories.RolRepo;
+import sv.gob.cajamined.siplan.repositories.TipoObjetivoRepo;
 import sv.gob.cajamined.siplan.repositories.UsuarioRepo;
 
 @SpringBootApplication
@@ -22,7 +27,8 @@ public class SiplanApiApplication {
 	}
 
 	@Bean
-	CommandLineRunner run(UsuarioRepo usuarioRepo, RolRepo rolRepo, OrganizacionRepo organizacionRepo) {
+	CommandLineRunner run(UsuarioRepo usuarioRepo, RolRepo rolRepo, OrganizacionRepo organizacionRepo,
+			TipoObjetivoRepo tipoObjetivoRepo, ObjetivoRepo objetivoRepo) {
 		return args -> {
 			Rol rol1 = rolRepo.save(new Rol(null, "ROLE_USER"));
 			Rol rol2 = rolRepo.save(new Rol(null, "ROLE_MANAGER"));
@@ -37,10 +43,13 @@ public class SiplanApiApplication {
 			usuarioRepo.save(user1);
 			usuarioRepo.save(user2);
 
-			organizacionRepo.save(new Organizacion(null, "Caja Mutual de los Empleados del MINED", "Descripción",
+			Organizacion org1 = organizacionRepo.save(new Organizacion(null, "Caja Mutual de los Empleados del MINED",
+					"Descripción", "Misión", "Visión", new ArrayList<>(), new ArrayList<>()));
+			Organizacion org2 = organizacionRepo.save(new Organizacion(null, "Ministerio de Educación", "Descripción",
 					"Misión", "Visión", new ArrayList<>(), new ArrayList<>()));
-			organizacionRepo.save(new Organizacion(null, "Ministerio de Educación", "Descripción", "Misión", "Visión",
-					new ArrayList<>(), new ArrayList<>()));
+
+			TipoObjetivo tipo1 = tipoObjetivoRepo.save(new TipoObjetivo(null, "Tipo Obj 1", null));
+			TipoObjetivo tipo2 = tipoObjetivoRepo.save(new TipoObjetivo(null, "Tipo Obj 2", null));
 		};
 	}
 }
