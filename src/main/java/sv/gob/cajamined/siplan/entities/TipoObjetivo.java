@@ -1,6 +1,9 @@
 package sv.gob.cajamined.siplan.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,7 +35,7 @@ public class TipoObjetivo implements Serializable {
 	private String nombreTipoObjetivo;
 
 	@OneToMany(mappedBy = "tipoObjetivo", cascade = CascadeType.ALL)
-	@JsonManagedReference
+	@JsonIgnore
 	private List<Objetivo> objetivoList;
 
 }

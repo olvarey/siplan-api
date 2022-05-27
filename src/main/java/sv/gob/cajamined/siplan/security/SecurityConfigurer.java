@@ -11,10 +11,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
 import sv.gob.cajamined.siplan.filters.JwtRequestFilter;
 import sv.gob.cajamined.siplan.services.MyUserDetailsService;
 
@@ -37,7 +33,9 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.cors();
 		http.authorizeRequests().antMatchers("/api-siplan/v1/authenticate").permitAll()
-				.antMatchers("/api-siplan/v1/organizaciones/**").hasAuthority("ROLE_ADMIN").anyRequest()
+				.antMatchers("/api-siplan/v1/organizaciones/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/api-siplan/v1/objetivos/**").hasAuthority("ROLE_ADMIN")
+                .anyRequest()
 				.authenticated();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

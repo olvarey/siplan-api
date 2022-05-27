@@ -1,8 +1,5 @@
 package sv.gob.cajamined.siplan.services;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -10,9 +7,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import sv.gob.cajamined.siplan.entities.Usuario;
 import sv.gob.cajamined.siplan.repositories.UsuarioRepo;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
