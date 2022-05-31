@@ -27,8 +27,7 @@ public class OrganizacionController {
     }
 
     @PostMapping(value = "organizaciones")
-    public void addSolicitante(@RequestBody Organizacion organizacion) {
-        organizacionRepo.save(organizacion);
+    public Organizacion createOrganizacion(@RequestBody Organizacion organizacion) {
+        return organizacionRepo.save(organizacion);
     }
-
 }
