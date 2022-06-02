@@ -1,14 +1,23 @@
 package sv.gob.cajamined.siplan;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import sv.gob.cajamined.siplan.entities.*;
-import sv.gob.cajamined.siplan.repositories.*;
 
-import java.util.ArrayList;
-import java.util.Date;
+import sv.gob.cajamined.siplan.entities.Objetivo;
+import sv.gob.cajamined.siplan.entities.Organizacion;
+import sv.gob.cajamined.siplan.entities.Rol;
+import sv.gob.cajamined.siplan.entities.TipoObjetivo;
+import sv.gob.cajamined.siplan.entities.Usuario;
+import sv.gob.cajamined.siplan.repositories.ObjetivoRepo;
+import sv.gob.cajamined.siplan.repositories.OrganizacionRepo;
+import sv.gob.cajamined.siplan.repositories.RolRepo;
+import sv.gob.cajamined.siplan.repositories.TipoObjetivoRepo;
+import sv.gob.cajamined.siplan.repositories.UsuarioRepo;
 
 @SpringBootApplication
 public class SiplanApiApplication {
