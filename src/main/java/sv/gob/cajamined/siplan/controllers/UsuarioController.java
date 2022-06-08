@@ -1,5 +1,8 @@
 package sv.gob.cajamined.siplan.controllers;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import sv.gob.cajamined.siplan.authentication.AuthenticationRequest;
 import sv.gob.cajamined.siplan.authentication.AuthenticationResponse;
 import sv.gob.cajamined.siplan.services.MyUserDetailsService;
@@ -30,7 +34,6 @@ public class UsuarioController {
 	@Autowired
 	private JwtUtil jwtTokenUtil;
 
-
 	@PostMapping(value = "authenticate")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
 			throws Exception {
@@ -43,8 +46,13 @@ public class UsuarioController {
 
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 
+		final Collection<String> roles = new ArrayList<>();
+		userDetails.getAuthorities().forEach(rol -> {
+			roles.add(rol.getAuthority());
+		});
+
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		return ResponseEntity.ok(new AuthenticationResponse(jwt, roles));
 	}
 }

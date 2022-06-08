@@ -11,6 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 import sv.gob.cajamined.siplan.filters.JwtRequestFilter;
 import sv.gob.cajamined.siplan.services.MyUserDetailsService;
 
