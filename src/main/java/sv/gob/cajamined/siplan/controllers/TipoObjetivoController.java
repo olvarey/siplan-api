@@ -30,17 +30,17 @@ public class TipoObjetivoController {
 	}
 
 	@GetMapping(value = "tipos-objetivo/{idTipoObjetivo}")
-	private Optional<TipoObjetivo> getOrganizacionById(@PathVariable Long idTipoObjetivo) {
+	private Optional<TipoObjetivo> getTipoObjetivoById(@PathVariable Long idTipoObjetivo) {
 		return tipoObjetivoRepo.findById(idTipoObjetivo);
 	}
 
 	@PostMapping(value = "tipos-objetivo")
-	public TipoObjetivo createOrganizacion(@RequestBody TipoObjetivo tipoObjetivo) {
+	public TipoObjetivo createTipoObjetivo(@RequestBody TipoObjetivo tipoObjetivo) {
 		return tipoObjetivoRepo.save(tipoObjetivo);
 	}
 
 	@DeleteMapping(value = "tipos-objetivo")
-	public void deleteOrganizacion(@RequestBody TipoObjetivo tipoObjetivo) {
+	public void deleteTipoObjetivo(@RequestBody TipoObjetivo tipoObjetivo) {
 		tipoObjetivoRepo.delete(tipoObjetivo);
 	}
 }
