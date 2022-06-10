@@ -9,5 +9,4 @@ import sv.gob.cajamined.siplan.entities.TipoIndicador;
 @Repository
 public interface TipoIndicadorRepo extends JpaRepository<TipoIndicador, Long> {
     List<TipoIndicador> findByOrderByIdTipoIndicadorAsc();
-
 }

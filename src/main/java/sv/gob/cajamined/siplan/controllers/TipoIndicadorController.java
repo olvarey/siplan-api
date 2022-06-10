@@ -35,12 +35,12 @@ public class TipoIndicadorController {
     }
 
     @PostMapping(value = "tipos-indicador")
-    public TipoIndicador createTipoIndicador(@RequestBody TipoIndicador idTipoIndicador) {
-        return tipoIndicadorRepo.save(idTipoIndicador);
+    public TipoIndicador createTipoIndicador(@RequestBody TipoIndicador tipoIndicador) {
+        return tipoIndicadorRepo.save(tipoIndicador);
     }
 
     @DeleteMapping(value = "tipos-indicador")
-    public void deleteTipoIndicador(@RequestBody TipoIndicador idTipoIndicador) {
-        tipoIndicadorRepo.delete(idTipoIndicador);
+    public void deleteTipoIndicador(@RequestBody TipoIndicador tipoIndicador) {
+        tipoIndicadorRepo.delete(tipoIndicador);
     }
 }
