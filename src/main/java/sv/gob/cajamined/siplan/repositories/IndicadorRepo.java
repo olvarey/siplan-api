@@ -4,7 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import sv.gob.cajamined.siplan.entities.Indicador;
 
-@Repository
-public interface IndicadorRepo extends JpaRepository<Indicador, Long>{
+import java.util.List;
 
+@Repository
+public interface IndicadorRepo extends JpaRepository<Indicador, Long> {
+    List<Indicador> findByOrderByIdIndicadorAsc();
 }
