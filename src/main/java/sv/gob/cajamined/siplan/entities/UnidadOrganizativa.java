@@ -43,7 +43,6 @@ public class UnidadOrganizativa implements Serializable {
 
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_organizacion", referencedColumnName = "id_organizacion", foreignKey = @ForeignKey(name = "fk_unidad_org_organizacion"))
-	@JsonIgnoreProperties("unidadOrganizativaList")
 	private Organizacion organizacion;
 
 	@ManyToOne(optional = true)

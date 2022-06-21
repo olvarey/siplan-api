@@ -1,17 +1,26 @@
 package sv.gob.cajamined.siplan.entities;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
-
 @Entity
-@Table(name = "anio", schema = "siplan", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "id_anio", "id_periodo" }, name = "unique_anio_periodo") })
+@Table(name = "anio", schema = "siplan")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,11 +40,8 @@ public class Anio implements Serializable {
 	@Column(name = "valor_anio", nullable = false)
 	private Long valorAnio;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_periodo", referencedColumnName = "id_periodo", foreignKey = @ForeignKey(name = "fk_anio_periodo"))
-	private Periodo periodo;
-
 	@OneToMany(mappedBy = "anio", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<AnioResultado> anioResultadoList;
 
 }

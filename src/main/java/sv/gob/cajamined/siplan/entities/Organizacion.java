@@ -55,7 +55,7 @@ public class Organizacion implements Serializable {
     private List<Objetivo> objetivoList;
 
     @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("organizacion")
+    @JsonIgnore
     private List<UnidadOrganizativa> unidadOrganizativaList;
 
 }
