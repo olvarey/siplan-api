@@ -1,16 +1,29 @@
 package sv.gob.cajamined.siplan.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "resultado", schema = "siplan")
@@ -48,16 +61,18 @@ public class Resultado implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_eje", referencedColumnName = "id_eje", foreignKey = @ForeignKey(name = "fk_eje_resultado"))
-	@JsonBackReference
 	private Eje eje;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_indicador", referencedColumnName = "id_indicador", foreignKey = @ForeignKey(name = "fk_resultado_indicador"))
-	@JsonBackReference
 	private Indicador indicador;
 
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "id_anio", referencedColumnName = "id_anio", foreignKey = @ForeignKey(name = "fk_resultado_anio"))
+	private Anio anio;
+
 	@OneToMany(mappedBy = "resultado", cascade = CascadeType.ALL)
-	@JsonManagedReference
-	private List<AnioResultado> anioResultadoList;
+	@JsonIgnore
+	public List<Accion> accionList;
 
 }

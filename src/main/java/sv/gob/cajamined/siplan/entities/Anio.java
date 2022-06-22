@@ -42,6 +42,5 @@ public class Anio implements Serializable {
 
 	@OneToMany(mappedBy = "anio", cascade = CascadeType.ALL)
 	@JsonIgnore
-	private List<AnioResultado> anioResultadoList;
-
+	private List<Resultado> resultadoList;
 }

@@ -1,13 +1,23 @@
 package sv.gob.cajamined.siplan.entities;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "unidad_presupuestaria", schema = "siplan")
@@ -31,6 +41,7 @@ public class UnidadPresupuestaria implements Serializable {
 	private String nombreUnidadPresupuestaria;
 
 	@OneToMany(mappedBy = "unidadPresupuestaria", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<LineaTrabajo> lineaTrabajoList;
 
 }

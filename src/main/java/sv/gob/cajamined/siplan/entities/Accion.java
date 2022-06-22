@@ -1,14 +1,27 @@
 package sv.gob.cajamined.siplan.entities;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "accion", schema = "siplan")
@@ -53,12 +66,6 @@ public class Accion implements Serializable {
 	@Column(name = "usuario_creacion_accion", nullable = false, length = 300)
 	private String usuarioCreacionAccion;
 
-	@ManyToOne(optional = false)
-	@JoinColumns(foreignKey = @ForeignKey(name = "fk_accion_anio_resultado"), value = {
-			@JoinColumn(name = "id_anio", referencedColumnName = "id_anio"),
-			@JoinColumn(name = "id_resultado", referencedColumnName = "id_resultado") })
-	private AnioResultado anioResultado;
-
 	@OneToMany(mappedBy = "accion", cascade = CascadeType.ALL)
 	private List<Seguimiento> seguimientoList;
 
@@ -69,4 +76,8 @@ public class Accion implements Serializable {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_linea_trabajo", referencedColumnName = "id_linea_trabajo", foreignKey = @ForeignKey(name = "fk_accion_linea_trabajo"))
 	private LineaTrabajo lineaTrabajo;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "id_resultado", referencedColumnName = "id_resultado", foreignKey = @ForeignKey(name = "fk_accion_resultado"))
+	private Resultado resultado;
 }

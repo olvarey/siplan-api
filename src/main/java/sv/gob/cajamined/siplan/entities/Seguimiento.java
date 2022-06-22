@@ -10,7 +10,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "seguimiento", schema = "siplan")
+@Table(name = "seguimiento", schema = "siplan", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "id_accion", "id_mes" }, name = "unique_accion_mes") })
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,8 +23,10 @@ public class Seguimiento implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private SeguimientoPK idSeguimientoPK;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_seguimiento")
+	private Long idSeguimiento;
 
 	@Column(name = "detalle_seguimiento", length = 500, nullable = false)
 	private String detalleSeguimiento;
@@ -55,13 +58,11 @@ public class Seguimiento implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechaEjecucionSeguimiento;
 
-	@ManyToOne
-	@MapsId("idAccion")
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_accion", referencedColumnName = "id_accion", foreignKey = @ForeignKey(name = "fk_seguimiento_accion"))
 	private Accion accion;
 
-	@ManyToOne
-	@MapsId("idMes")
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_mes", referencedColumnName = "id_mes", foreignKey = @ForeignKey(name = "fk_seguimiento_mes"))
 	private Mes mes;
 
