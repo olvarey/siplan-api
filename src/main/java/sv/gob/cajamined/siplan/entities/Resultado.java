@@ -1,7 +1,6 @@
 package sv.gob.cajamined.siplan.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -51,13 +48,6 @@ public class Resultado implements Serializable {
 
 	@Column(name = "nombre_responsable_resultado", length = 500)
 	private String nombreResponsableResultado;
-
-	@Column(name = "fecha_creacion_resultado")
-	@Temporal(TemporalType.DATE)
-	private Date fechaCreacionResultado;
-
-	@Column(name = "usuario_creacion_resultado", nullable = false, length = 300)
-	private String usuarioCreacionResultado;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "id_eje", referencedColumnName = "id_eje", foreignKey = @ForeignKey(name = "fk_eje_resultado"))

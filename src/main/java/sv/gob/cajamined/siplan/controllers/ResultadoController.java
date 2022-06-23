@@ -13,35 +13,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import sv.gob.cajamined.siplan.entities.Eje;
-import sv.gob.cajamined.siplan.repositories.EjeRepo;
+import sv.gob.cajamined.siplan.entities.Resultado;
+import sv.gob.cajamined.siplan.repositories.ResultadoRepo;
 
 @RestController
 @RequestMapping(value = "/api-siplan/v1/")
 @CrossOrigin(value = "*")
-public class EjeController {
+public class ResultadoController {
 
 	@Autowired
-	private EjeRepo ejeRepo;
+	private ResultadoRepo resultadoRepo;
 
-	@GetMapping(value = "ejes")
-	private List<Eje> getAllEjes() {
-		return ejeRepo.findByOrderByIdEjeAsc();
+	@GetMapping(value = "resultados")
+	private List<Resultado> getAllResultados() {
+		return resultadoRepo.findByOrderByIdResultadoAsc();
 	}
 
-	@GetMapping(value = "ejes/{idEje}")
-	private Optional<Eje> getEjeById(@PathVariable Long idEje) {
-		return ejeRepo.findById(idEje);
+	@GetMapping(value = "resultados/{idResultado}")
+	private Optional<Resultado> getResultadoById(@PathVariable Long idResultado) {
+		return resultadoRepo.findById(idResultado);
 	}
 
-	@PostMapping(value = "ejes")
-	public Eje createEje(@RequestBody Eje eje) {
-		return ejeRepo.save(eje);
+	@PostMapping(value = "resultados")
+	public Resultado createResultado(@RequestBody Resultado resultado) {
+		return resultadoRepo.save(resultado);
 	}
 
-	@DeleteMapping(value = "ejes")
-	public void deleteEje(@RequestBody Eje eje) {
-		ejeRepo.delete(eje);
+	@DeleteMapping(value = "resultados")
+	public void deleteResultado(@RequestBody Resultado resultado) {
+		resultadoRepo.delete(resultado);
 	}
 
 }

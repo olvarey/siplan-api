@@ -13,4 +13,6 @@ public interface ObjetivoRepo extends JpaRepository<Objetivo, Long> {
 
 	List<Objetivo> findByOrganizacionIdOrganizacion(Long idOrganizacion);
 
+	List<Objetivo> findByOrderByIdObjetivoAsc();
+
 }

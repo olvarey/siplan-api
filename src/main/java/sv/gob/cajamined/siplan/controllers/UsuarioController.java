@@ -45,7 +45,7 @@ public class UsuarioController {
 	private UsuarioRepo usuarioRepo;
 
 	@GetMapping(value = "usuarios")
-	private List<Usuario> getAllRoles() {
+	private List<Usuario> getAllUsuarios() {
 		return usuarioRepo.findByOrderByIdUsuarioAsc();
 	}
 
