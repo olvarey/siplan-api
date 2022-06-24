@@ -1,7 +1,6 @@
 package sv.gob.cajamined.siplan.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,8 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -59,14 +58,8 @@ public class Accion implements Serializable {
 	@Column(name = "observacion", length = 500)
 	private String observacion;
 
-	@Column(name = "fecha_creacion_accion")
-	@Temporal(TemporalType.DATE)
-	private Date fechaCreacionAccion;
-
-	@Column(name = "usuario_creacion_accion", nullable = false, length = 300)
-	private String usuarioCreacionAccion;
-
 	@OneToMany(mappedBy = "accion", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Seguimiento> seguimientoList;
 
 	@ManyToOne(optional = false)
