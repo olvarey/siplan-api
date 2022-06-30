@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import sv.gob.cajamined.siplan.entities.Seguimiento;
+import sv.gob.cajamined.siplan.enums.Mes;
 import sv.gob.cajamined.siplan.repositories.SeguimientoRepo;
 
 @RestController
@@ -42,5 +43,10 @@ public class SeguimientoController {
 	@DeleteMapping(value = "seguimientos")
 	public void deleteAnio(@RequestBody Seguimiento seguimiento) {
 		seguimientoRepo.delete(seguimiento);
+	}
+
+	@GetMapping(value = "seguimientos/meses")
+	public Mes[] meses() {
+		return Mes.values();
 	}
 }

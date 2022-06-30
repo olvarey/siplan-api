@@ -30,9 +30,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Objetivo implements Serializable {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -60,6 +57,10 @@ public class Objetivo implements Serializable {
 	@JsonIgnore
 	private List<Eje> ejeList;
 
-//	@ManyToMany(mappedBy = "objetivoSet")
-//	private Set<Plan> planSet;
+	@OneToMany(mappedBy = "objetivo", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Riesgo> riesgoList;
+
+	// @ManyToMany(mappedBy = "objetivoSet")
+	// private Set<Plan> planSet;
 }

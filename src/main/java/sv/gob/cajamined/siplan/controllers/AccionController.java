@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import sv.gob.cajamined.siplan.entities.Accion;
+import sv.gob.cajamined.siplan.enums.Mes;
 import sv.gob.cajamined.siplan.repositories.AccionRepo;
 
 @RestController
@@ -42,5 +43,10 @@ public class AccionController {
 	@DeleteMapping(value = "acciones")
 	public void deleteAnio(@RequestBody Accion accion) {
 		accionRepo.delete(accion);
+	}
+
+	@GetMapping(value = "acciones/meses")
+	public Mes[] meses() {
+		return Mes.values();
 	}
 }
