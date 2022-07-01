@@ -1,13 +1,14 @@
 package sv.gob.cajamined.siplan.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@JsonFormat(shape = Shape.OBJECT)
 public enum Mes {
     ENERO(1, "ENERO"),
     FEBRERO(2, "FEBRERO"),

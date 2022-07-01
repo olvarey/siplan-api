@@ -9,11 +9,12 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 @JsonFormat(shape = Shape.OBJECT)
-public enum FrecuenciaDescripcion {
-    BAJA(1, "BAJA"),
-    MODERADA(2, "MODERADA"),
-    ALTA(3, "ALTA");
+public enum FODA {
+    FORTALEZA(1, "FORTALEZA"),
+    OPORTUNIDAD(2, "OPORTUNIDAD"),
+    DEBILIDAD(3, "DEBILIDAD"),
+    AMENAZA(4, "AMENAZA");
 
-    private int idFrecuencia;
-    private String nombreFrecuencia;
+    private int idFODA;
+    private String cuadrante;
 }

@@ -46,7 +46,7 @@ public class Seguimiento implements Serializable {
 	@Column(name = "presupuesto_ejecutado", nullable = false)
 	private double presupuestoEjecutado;
 
-	@Column(name = "numero_acciones_mensuales", nullable = false)
+	@Column(name = "numero_acciones_mensuales")
 	private Long numeroAccionesMensuales;
 
 	@Column(name = "ejecutado")
