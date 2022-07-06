@@ -1,7 +1,6 @@
 package sv.gob.cajamined.siplan;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
