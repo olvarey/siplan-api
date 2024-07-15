@@ -10,10 +10,10 @@ import lombok.Getter;
 @Getter
 @JsonFormat(shape = Shape.OBJECT)
 public enum FrecuenciaDescripcion {
-    BAJA(1, "BAJA"),
-    MODERADA(2, "MODERADA"),
-    ALTA(3, "ALTA");
+  BAJA(1, "BAJA"),
+  MODERADA(2, "MODERADA"),
+  ALTA(3, "ALTA");
 
-    private int idFrecuencia;
-    private String nombreFrecuencia;
+  private int idFrecuencia;
+  private String nombreFrecuencia;
 }

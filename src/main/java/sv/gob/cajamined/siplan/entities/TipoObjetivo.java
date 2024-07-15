@@ -27,21 +27,21 @@ import lombok.NoArgsConstructor;
 @Builder
 public class TipoObjetivo implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_tipo_objetivo")
-	private Long idTipoObjetivo;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_tipo_objetivo")
+  private Long idTipoObjetivo;
 
-	@Column(name = "nombre_tipo_objetivo", length = 300, nullable = false)
-	private String nombreTipoObjetivo;
+  @Column(name = "nombre_tipo_objetivo", length = 300, nullable = false)
+  private String nombreTipoObjetivo;
 
-	@OneToMany(mappedBy = "tipoObjetivo", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<Objetivo> objetivoList;
+  @OneToMany(mappedBy = "tipoObjetivo", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<Objetivo> objetivoList;
 
 }

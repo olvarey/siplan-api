@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.Seguimiento;
 
 @Repository
 public interface SeguimientoRepo extends JpaRepository<Seguimiento, Long> {
-    List<Seguimiento> findByOrderByIdSeguimientoAsc();
+
+  List<Seguimiento> findByOrderByIdSeguimientoAsc();
 }

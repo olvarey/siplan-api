@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.Resultado;
 
 @Repository
 public interface ResultadoRepo extends JpaRepository<Resultado, Long> {
-	List<Resultado> findByOrderByIdResultadoAsc();
+
+  List<Resultado> findByOrderByIdResultadoAsc();
 }

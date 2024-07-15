@@ -32,57 +32,59 @@ import sv.gob.cajamined.siplan.util.JwtUtil;
 @CrossOrigin(value = "*")
 public class UsuarioController {
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
+  @Autowired
+  private AuthenticationManager authenticationManager;
 
-	@Autowired
-	private MyUserDetailsService userDetailsService;
+  @Autowired
+  private MyUserDetailsService userDetailsService;
 
-	@Autowired
-	private JwtUtil jwtTokenUtil;
+  @Autowired
+  private JwtUtil jwtTokenUtil;
 
-	@Autowired
-	private UsuarioRepo usuarioRepo;
+  @Autowired
+  private UsuarioRepo usuarioRepo;
 
-	@GetMapping(value = "usuarios")
-	private List<Usuario> getAllUsuarios() {
-		return usuarioRepo.findByOrderByIdUsuarioAsc();
-	}
+  @GetMapping(value = "usuarios")
+  private List<Usuario> getAllUsuarios() {
+    return usuarioRepo.findByOrderByIdUsuarioAsc();
+  }
 
-	@GetMapping(value = "usuarios/{idUsuario}")
-	private Optional<Usuario> getUsuarioById(@PathVariable Long idUsuario) {
-		return usuarioRepo.findById(idUsuario);
-	}
+  @GetMapping(value = "usuarios/{idUsuario}")
+  private Optional<Usuario> getUsuarioById(@PathVariable Long idUsuario) {
+    return usuarioRepo.findById(idUsuario);
+  }
 
-	@PostMapping(value = "usuarios")
-	public Usuario createUsuario(@RequestBody Usuario usuario) {
-		return usuarioRepo.save(usuario);
-	}
+  @PostMapping(value = "usuarios")
+  public Usuario createUsuario(@RequestBody Usuario usuario) {
+    return usuarioRepo.save(usuario);
+  }
 
-	@DeleteMapping(value = "usuarios")
-	public void deleteUsuario(@RequestBody Usuario usuario) {
-		usuarioRepo.delete(usuario);
-	}
+  @DeleteMapping(value = "usuarios")
+  public void deleteUsuario(@RequestBody Usuario usuario) {
+    usuarioRepo.delete(usuario);
+  }
 
-	@PostMapping(value = "authenticate")
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest)
-			throws Exception {
-		try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-					authenticationRequest.getUsername(), authenticationRequest.getPassword()));
-		} catch (BadCredentialsException e) {
-			throw new Exception("Usuario ó contraseña incorrectos", e);
-		}
+  @PostMapping(value = "authenticate")
+  public ResponseEntity<?> createAuthenticationToken(
+    @RequestBody AuthenticationRequest authenticationRequest)
+    throws Exception {
+    try {
+      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+        authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+    } catch (BadCredentialsException e) {
+      throw new Exception("Usuario ó contraseña incorrectos", e);
+    }
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+    final UserDetails userDetails = userDetailsService.loadUserByUsername(
+      authenticationRequest.getUsername());
 
-		final Collection<String> roles = new ArrayList<>();
-		userDetails.getAuthorities().forEach(rol -> {
-			roles.add(rol.getAuthority());
-		});
+    final Collection<String> roles = new ArrayList<>();
+    userDetails.getAuthorities().forEach(rol -> {
+      roles.add(rol.getAuthority());
+    });
 
-		final String jwt = jwtTokenUtil.generateToken(userDetails);
+    final String jwt = jwtTokenUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new AuthenticationResponse(jwt, roles));
-	}
+    return ResponseEntity.ok(new AuthenticationResponse(jwt, roles));
+  }
 }

@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.RolRepo;
 @CrossOrigin(value = "*")
 public class RolController {
 
-	@Autowired
-	private RolRepo rolRepo;
+  @Autowired
+  private RolRepo rolRepo;
 
-	@GetMapping(value = "roles")
-	private List<Rol> getAllRoles() {
-		return rolRepo.findByOrderByIdRolAsc();
-	}
+  @GetMapping(value = "roles")
+  private List<Rol> getAllRoles() {
+    return rolRepo.findByOrderByIdRolAsc();
+  }
 
-	@GetMapping(value = "roles/{idRol}")
-	private Optional<Rol> getRolById(@PathVariable Long idRol) {
-		return rolRepo.findById(idRol);
-	}
+  @GetMapping(value = "roles/{idRol}")
+  private Optional<Rol> getRolById(@PathVariable Long idRol) {
+    return rolRepo.findById(idRol);
+  }
 
-	@PostMapping(value = "roles")
-	public Rol createRol(@RequestBody Rol rol) {
-		return rolRepo.save(rol);
-	}
+  @PostMapping(value = "roles")
+  public Rol createRol(@RequestBody Rol rol) {
+    return rolRepo.save(rol);
+  }
 
-	@DeleteMapping(value = "roles")
-	public void deleteRol(@RequestBody Rol rol) {
-		rolRepo.delete(rol);
-	}
+  @DeleteMapping(value = "roles")
+  public void deleteRol(@RequestBody Rol rol) {
+    rolRepo.delete(rol);
+  }
 }

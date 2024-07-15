@@ -21,36 +21,36 @@ import sv.gob.cajamined.siplan.repositories.ObjetivoRepo;
 @CrossOrigin(value = "*")
 public class ObjetivoController {
 
-	@Autowired
-	private ObjetivoRepo objetivoRepo;
+  @Autowired
+  private ObjetivoRepo objetivoRepo;
 
-	@GetMapping(value = "objetivos")
-	private List<Objetivo> getAllObjetivos() {
-		return objetivoRepo.findByOrderByIdObjetivoAsc();
-	}
+  @GetMapping(value = "objetivos")
+  private List<Objetivo> getAllObjetivos() {
+    return objetivoRepo.findByOrderByIdObjetivoAsc();
+  }
 
-	@GetMapping(value = "objetivos/{idObjetivo}")
-	private Optional<Objetivo> getObjetivoById(@PathVariable Long idObjetivo) {
-		return objetivoRepo.findById(idObjetivo);
-	}
+  @GetMapping(value = "objetivos/{idObjetivo}")
+  private Optional<Objetivo> getObjetivoById(@PathVariable Long idObjetivo) {
+    return objetivoRepo.findById(idObjetivo);
+  }
 
-	@GetMapping(value = "objetivos/tipos-objetivo/{idTipoObjetivo}")
-	private List<Objetivo> getObjetivosByTipoObjetivo(@PathVariable Long idTipoObjetivo) {
-		return objetivoRepo.findByTipoObjetivoIdTipoObjetivo(idTipoObjetivo);
-	}
+  @GetMapping(value = "objetivos/tipos-objetivo/{idTipoObjetivo}")
+  private List<Objetivo> getObjetivosByTipoObjetivo(@PathVariable Long idTipoObjetivo) {
+    return objetivoRepo.findByTipoObjetivoIdTipoObjetivo(idTipoObjetivo);
+  }
 
-	@GetMapping(value = "organizaciones/{idOrganizacion}/objetivos")
-	private List<Objetivo> getObjetivosByOrganizacion(@PathVariable Long idOrganizacion) {
-		return objetivoRepo.findByOrganizacionIdOrganizacion(idOrganizacion);
-	}
+  @GetMapping(value = "organizaciones/{idOrganizacion}/objetivos")
+  private List<Objetivo> getObjetivosByOrganizacion(@PathVariable Long idOrganizacion) {
+    return objetivoRepo.findByOrganizacionIdOrganizacion(idOrganizacion);
+  }
 
-	@PostMapping(value = "objetivos")
-	public void saveObjetivo(@RequestBody Objetivo objetivo) {
-		objetivoRepo.save(objetivo);
-	}
+  @PostMapping(value = "objetivos")
+  public void saveObjetivo(@RequestBody Objetivo objetivo) {
+    objetivoRepo.save(objetivo);
+  }
 
-	@DeleteMapping(value = "objetivos")
-	public void deleteObjetivo(@RequestBody Objetivo objetivo) {
-		objetivoRepo.delete(objetivo);
-	}
+  @DeleteMapping(value = "objetivos")
+  public void deleteObjetivo(@RequestBody Objetivo objetivo) {
+    objetivoRepo.delete(objetivo);
+  }
 }

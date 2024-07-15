@@ -21,26 +21,28 @@ import sv.gob.cajamined.siplan.repositories.UnidadOrganizativaRepo;
 @CrossOrigin(value = "*")
 public class UnidadOrganizativaController {
 
-    @Autowired
-    private UnidadOrganizativaRepo unidadOrganizativaRepo;
+  @Autowired
+  private UnidadOrganizativaRepo unidadOrganizativaRepo;
 
-    @GetMapping(value = "unidades-organizativas")
-    private List<UnidadOrganizativa> getAllUnidadesOrganizativas() {
-        return unidadOrganizativaRepo.findByOrderByIdUnidadOrganizativaAsc();
-    }
+  @GetMapping(value = "unidades-organizativas")
+  private List<UnidadOrganizativa> getAllUnidadesOrganizativas() {
+    return unidadOrganizativaRepo.findByOrderByIdUnidadOrganizativaAsc();
+  }
 
-    @GetMapping(value = "unidades-organizativas/{idUnidadOrganizativa}")
-    private Optional<UnidadOrganizativa> getUnidadOrganizativaById(@PathVariable Long idUnidadOrganizativa) {
-        return unidadOrganizativaRepo.findById(idUnidadOrganizativa);
-    }
+  @GetMapping(value = "unidades-organizativas/{idUnidadOrganizativa}")
+  private Optional<UnidadOrganizativa> getUnidadOrganizativaById(
+    @PathVariable Long idUnidadOrganizativa) {
+    return unidadOrganizativaRepo.findById(idUnidadOrganizativa);
+  }
 
-    @PostMapping(value = "unidades-organizativas")
-    public UnidadOrganizativa createUnidadOrganizativa(@RequestBody UnidadOrganizativa unidadOrganizativa) {
-        return unidadOrganizativaRepo.save(unidadOrganizativa);
-    }
+  @PostMapping(value = "unidades-organizativas")
+  public UnidadOrganizativa createUnidadOrganizativa(
+    @RequestBody UnidadOrganizativa unidadOrganizativa) {
+    return unidadOrganizativaRepo.save(unidadOrganizativa);
+  }
 
-    @DeleteMapping(value = "unidades-organizativas")
-    public void deleteUnidadOrganizativa(@RequestBody UnidadOrganizativa unidadOrganizativa) {
-        unidadOrganizativaRepo.delete(unidadOrganizativa);
-    }
+  @DeleteMapping(value = "unidades-organizativas")
+  public void deleteUnidadOrganizativa(@RequestBody UnidadOrganizativa unidadOrganizativa) {
+    unidadOrganizativaRepo.delete(unidadOrganizativa);
+  }
 }

@@ -30,27 +30,27 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Eje implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_eje")
-	private Long idEje;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_eje")
+  private Long idEje;
 
-	@Column(name = "nombre_eje", length = 300, nullable = false)
-	private String nombreEje;
+  @Column(name = "nombre_eje", length = 300, nullable = false)
+  private String nombreEje;
 
-	@Column(name = "descripcion_eje", length = 500)
-	private String descripcionEje;
+  @Column(name = "descripcion_eje", length = 500)
+  private String descripcionEje;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_objetivo", referencedColumnName = "id_objetivo", foreignKey = @ForeignKey(name = "fk_eje_objetivo"))
-	private Objetivo objetivo;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_objetivo", referencedColumnName = "id_objetivo", foreignKey = @ForeignKey(name = "fk_eje_objetivo"))
+  private Objetivo objetivo;
 
-	@OneToMany(mappedBy = "eje", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<Resultado> resultadoList;
+  @OneToMany(mappedBy = "eje", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<Resultado> resultadoList;
 }

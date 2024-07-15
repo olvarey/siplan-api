@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface UnidadOrganizativaRepo extends JpaRepository<UnidadOrganizativa, Long> {
-    List<UnidadOrganizativa> findByOrderByIdUnidadOrganizativaAsc();
+
+  List<UnidadOrganizativa> findByOrderByIdUnidadOrganizativaAsc();
 }

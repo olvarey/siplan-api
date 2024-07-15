@@ -27,20 +27,20 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Anio implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_anio")
-	private Long idAnio;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_anio")
+  private Long idAnio;
 
-	@Column(name = "valor_anio", nullable = false)
-	private Long valorAnio;
+  @Column(name = "valor_anio", nullable = false)
+  private Long valorAnio;
 
-	@OneToMany(mappedBy = "anio", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<Resultado> resultadoList;
+  @OneToMany(mappedBy = "anio", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<Resultado> resultadoList;
 }

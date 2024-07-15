@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.CategoriaRiesgo;
 
 @Repository
 public interface CategoriaRiesgoRepo extends JpaRepository<CategoriaRiesgo, Long> {
-    List<CategoriaRiesgo> findByOrderByIdCategoriaRiesgoAsc();
+
+  List<CategoriaRiesgo> findByOrderByIdCategoriaRiesgoAsc();
 }

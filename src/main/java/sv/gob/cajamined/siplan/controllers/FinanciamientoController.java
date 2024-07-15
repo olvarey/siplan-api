@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.FinanciamientoRepo;
 @CrossOrigin(value = "*")
 public class FinanciamientoController {
 
-	@Autowired
-	private FinanciamientoRepo financiamientoRepo;
+  @Autowired
+  private FinanciamientoRepo financiamientoRepo;
 
-	@GetMapping(value = "financiamientos")
-	private List<Financiamiento> getAllAnios() {
-		return financiamientoRepo.findByOrderByIdFinanciamientoAsc();
-	}
+  @GetMapping(value = "financiamientos")
+  private List<Financiamiento> getAllAnios() {
+    return financiamientoRepo.findByOrderByIdFinanciamientoAsc();
+  }
 
-	@GetMapping(value = "financiamientos/{idFinanciamiento}")
-	private Optional<Financiamiento> getAnioById(@PathVariable Long idFinanciamiento) {
-		return financiamientoRepo.findById(idFinanciamiento);
-	}
+  @GetMapping(value = "financiamientos/{idFinanciamiento}")
+  private Optional<Financiamiento> getAnioById(@PathVariable Long idFinanciamiento) {
+    return financiamientoRepo.findById(idFinanciamiento);
+  }
 
-	@PostMapping(value = "financiamientos")
-	public Financiamiento createAnio(@RequestBody Financiamiento financiamiento) {
-		return financiamientoRepo.save(financiamiento);
-	}
+  @PostMapping(value = "financiamientos")
+  public Financiamiento createAnio(@RequestBody Financiamiento financiamiento) {
+    return financiamientoRepo.save(financiamiento);
+  }
 
-	@DeleteMapping(value = "financiamientos")
-	public void deleteAnio(@RequestBody Financiamiento financiamiento) {
-		financiamientoRepo.delete(financiamiento);
-	}
+  @DeleteMapping(value = "financiamientos")
+  public void deleteAnio(@RequestBody Financiamiento financiamiento) {
+    financiamientoRepo.delete(financiamiento);
+  }
 }

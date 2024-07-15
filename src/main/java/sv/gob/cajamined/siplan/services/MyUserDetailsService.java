@@ -16,21 +16,21 @@ import java.util.Collection;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
-	@Autowired
-	private UsuarioRepo usuarioRepo;
+  @Autowired
+  private UsuarioRepo usuarioRepo;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		Usuario usuario = usuarioRepo.findByUsuario(username)
-				.orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+    Usuario usuario = usuarioRepo.findByUsuario(username)
+      .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
-		Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+    Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
-		usuario.getRoles().forEach(rol -> {
-			authorities.add(new SimpleGrantedAuthority(rol.getNombreRol()));
-		});
+    usuario.getRoles().forEach(rol -> {
+      authorities.add(new SimpleGrantedAuthority(rol.getNombreRol()));
+    });
 
-		return new User(usuario.getUsuario(), usuario.getContrasenia(), authorities);
-	}
+    return new User(usuario.getUsuario(), usuario.getContrasenia(), authorities);
+  }
 }

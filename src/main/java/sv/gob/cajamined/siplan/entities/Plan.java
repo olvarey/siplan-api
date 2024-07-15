@@ -17,35 +17,35 @@ import java.util.Date;
 @Builder
 public class Plan implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_plan")
-	private Long idPlan;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_plan")
+  private Long idPlan;
 
-	@Column(name = "nombre_plan", length = 300, nullable = false)
-	private String nombrePlan;
+  @Column(name = "nombre_plan", length = 300, nullable = false)
+  private String nombrePlan;
 
-	@Column(name = "descripcion_plan", length = 500, nullable = false)
-	private String descripcionPlan;
+  @Column(name = "descripcion_plan", length = 500, nullable = false)
+  private String descripcionPlan;
 
-	@Column(name = "fecha_creacion_plan", nullable = false)
-	@Temporal(TemporalType.DATE)
-	private Date fechaCreacionPlan;
+  @Column(name = "fecha_creacion_plan", nullable = false)
+  @Temporal(TemporalType.DATE)
+  private Date fechaCreacionPlan;
 
-	@Column(name = "usuario_creacion_plan", nullable = false, length = 300)
-	private String usuarioCreacionPlan;
+  @Column(name = "usuario_creacion_plan", nullable = false, length = 300)
+  private String usuarioCreacionPlan;
 
 //	@ManyToMany
 //	@JoinTable(name = "plan_objetivo", schema = "siplan", joinColumns = @JoinColumn(name = "id_plan", foreignKey = @ForeignKey(name = "fk_plan_objetivo_plan")), inverseJoinColumns = @JoinColumn(name = "id_objetivo", foreignKey = @ForeignKey(name = "fk_plan_objetivo_objetivo")))
 //	private Set<Objetivo> objetivoSet;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_tipo_plan", referencedColumnName = "id_tipo_plan", foreignKey = @ForeignKey(name = "fk_plan_tipo_plan"))
-	private TipoPlan tipoPlan;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_tipo_plan", referencedColumnName = "id_tipo_plan", foreignKey = @ForeignKey(name = "fk_plan_tipo_plan"))
+  private TipoPlan tipoPlan;
 
 }

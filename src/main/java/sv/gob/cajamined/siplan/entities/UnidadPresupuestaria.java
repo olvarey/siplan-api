@@ -27,21 +27,21 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UnidadPresupuestaria implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_unidad_presupuestaria")
-	private Long idUnidadPresupuestaria;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_unidad_presupuestaria")
+  private Long idUnidadPresupuestaria;
 
-	@Column(name = "nombre_unidad_presupuestaria", length = 300, nullable = false)
-	private String nombreUnidadPresupuestaria;
+  @Column(name = "nombre_unidad_presupuestaria", length = 300, nullable = false)
+  private String nombreUnidadPresupuestaria;
 
-	@OneToMany(mappedBy = "unidadPresupuestaria", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<LineaTrabajo> lineaTrabajoList;
+  @OneToMany(mappedBy = "unidadPresupuestaria", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<LineaTrabajo> lineaTrabajoList;
 
 }

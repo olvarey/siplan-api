@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.AnioRepo;
 @CrossOrigin(value = "*")
 public class AnioController {
 
-	@Autowired
-	private AnioRepo anioRepo;
+  @Autowired
+  private AnioRepo anioRepo;
 
-	@GetMapping(value = "anios")
-	private List<Anio> getAllAnios() {
-		return anioRepo.findByOrderByIdAnioAsc();
-	}
+  @GetMapping(value = "anios")
+  private List<Anio> getAllAnios() {
+    return anioRepo.findByOrderByIdAnioAsc();
+  }
 
-	@GetMapping(value = "anios/{idAnio}")
-	private Optional<Anio> getAnioById(@PathVariable Long idAnio) {
-		return anioRepo.findById(idAnio);
-	}
+  @GetMapping(value = "anios/{idAnio}")
+  private Optional<Anio> getAnioById(@PathVariable Long idAnio) {
+    return anioRepo.findById(idAnio);
+  }
 
-	@PostMapping(value = "anios")
-	public Anio createAnio(@RequestBody Anio anio) {
-		return anioRepo.save(anio);
-	}
+  @PostMapping(value = "anios")
+  public Anio createAnio(@RequestBody Anio anio) {
+    return anioRepo.save(anio);
+  }
 
-	@DeleteMapping(value = "anios")
-	public void deleteAnio(@RequestBody Anio anio) {
-		anioRepo.delete(anio);
-	}
+  @DeleteMapping(value = "anios")
+  public void deleteAnio(@RequestBody Anio anio) {
+    anioRepo.delete(anio);
+  }
 }

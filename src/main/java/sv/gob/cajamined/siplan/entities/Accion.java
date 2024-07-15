@@ -30,47 +30,47 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Accion implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_accion")
-	private Long idAccion;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_accion")
+  private Long idAccion;
 
-	@Column(name = "nombre_accion", length = 300, nullable = false)
-	private String nombreAccion;
+  @Column(name = "nombre_accion", length = 300, nullable = false)
+  private String nombreAccion;
 
-	@Column(name = "descripcion_accion", length = 500)
-	private String descripcionAccion;
+  @Column(name = "descripcion_accion", length = 500)
+  private String descripcionAccion;
 
-	@Column(name = "presupuesto_asignado_accion")
-	private double presupuestoAsignadoAccion;
+  @Column(name = "presupuesto_asignado_accion")
+  private double presupuestoAsignadoAccion;
 
-	@Column(name = "nombre_responsable_accion", length = 500)
-	private String nombreResponsableAccion;
+  @Column(name = "nombre_responsable_accion", length = 500)
+  private String nombreResponsableAccion;
 
-	@Column(name = "numero_acciones_anuales_accion", nullable = false)
-	private Integer numeroAccionesAnualesAccion;
+  @Column(name = "numero_acciones_anuales_accion", nullable = false)
+  private Integer numeroAccionesAnualesAccion;
 
-	@Column(name = "observacion", length = 500)
-	private String observacion;
+  @Column(name = "observacion", length = 500)
+  private String observacion;
 
-	@OneToMany(mappedBy = "accion", cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<Seguimiento> seguimientoList;
+  @OneToMany(mappedBy = "accion", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<Seguimiento> seguimientoList;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_financiamiento", referencedColumnName = "id_financiamiento", foreignKey = @ForeignKey(name = "fk_accion_financiamiento"))
-	private Financiamiento financiamiento;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_financiamiento", referencedColumnName = "id_financiamiento", foreignKey = @ForeignKey(name = "fk_accion_financiamiento"))
+  private Financiamiento financiamiento;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_linea_trabajo", referencedColumnName = "id_linea_trabajo", foreignKey = @ForeignKey(name = "fk_accion_linea_trabajo"))
-	private LineaTrabajo lineaTrabajo;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_linea_trabajo", referencedColumnName = "id_linea_trabajo", foreignKey = @ForeignKey(name = "fk_accion_linea_trabajo"))
+  private LineaTrabajo lineaTrabajo;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_resultado", referencedColumnName = "id_resultado", foreignKey = @ForeignKey(name = "fk_accion_resultado"))
-	private Resultado resultado;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_resultado", referencedColumnName = "id_resultado", foreignKey = @ForeignKey(name = "fk_accion_resultado"))
+  private Resultado resultado;
 }

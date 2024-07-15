@@ -22,31 +22,33 @@ import sv.gob.cajamined.siplan.repositories.SeguimientoRiesgoRepo;
 @CrossOrigin(value = "*")
 public class SeguimientoRiesgoController {
 
-	@Autowired
-	private SeguimientoRiesgoRepo seguimientoRiesgoRepo;
+  @Autowired
+  private SeguimientoRiesgoRepo seguimientoRiesgoRepo;
 
-	@GetMapping(value = "seguimientos-riesgo")
-	private List<SeguimientoRiesgo> getAllSeguimientosRiesgo() {
-		return seguimientoRiesgoRepo.findByOrderByIdSeguimientoRiesgoAsc();
-	}
+  @GetMapping(value = "seguimientos-riesgo")
+  private List<SeguimientoRiesgo> getAllSeguimientosRiesgo() {
+    return seguimientoRiesgoRepo.findByOrderByIdSeguimientoRiesgoAsc();
+  }
 
-	@GetMapping(value = "seguimientos-riesgo/{idSeguimientoRiesgo}")
-	private Optional<SeguimientoRiesgo> getSeguimientoRiesgoById(@PathVariable Long idSeguimientoRiesgo) {
-		return seguimientoRiesgoRepo.findById(idSeguimientoRiesgo);
-	}
+  @GetMapping(value = "seguimientos-riesgo/{idSeguimientoRiesgo}")
+  private Optional<SeguimientoRiesgo> getSeguimientoRiesgoById(
+    @PathVariable Long idSeguimientoRiesgo) {
+    return seguimientoRiesgoRepo.findById(idSeguimientoRiesgo);
+  }
 
-	@PostMapping(value = "seguimientos-riesgo")
-	public SeguimientoRiesgo createSeguimientoRiesgo(@RequestBody SeguimientoRiesgo seguimientoRiesgo) {
-		return seguimientoRiesgoRepo.save(seguimientoRiesgo);
-	}
+  @PostMapping(value = "seguimientos-riesgo")
+  public SeguimientoRiesgo createSeguimientoRiesgo(
+    @RequestBody SeguimientoRiesgo seguimientoRiesgo) {
+    return seguimientoRiesgoRepo.save(seguimientoRiesgo);
+  }
 
-	@DeleteMapping(value = "seguimientos-riesgo")
-	public void deleteSeguimientoRiesgo(@RequestBody SeguimientoRiesgo seguimientoRiesgo) {
-		seguimientoRiesgoRepo.delete(seguimientoRiesgo);
-	}
+  @DeleteMapping(value = "seguimientos-riesgo")
+  public void deleteSeguimientoRiesgo(@RequestBody SeguimientoRiesgo seguimientoRiesgo) {
+    seguimientoRiesgoRepo.delete(seguimientoRiesgo);
+  }
 
-	@GetMapping(value = "seguimientos-riesgo/meses")
-	public Mes[] meses() {
-		return Mes.values();
-	}
+  @GetMapping(value = "seguimientos-riesgo/meses")
+  public Mes[] meses() {
+    return Mes.values();
+  }
 }

@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.Accion;
 
 @Repository
 public interface AccionRepo extends JpaRepository<Accion, Long> {
-    List<Accion> findByOrderByIdAccionAsc();
+
+  List<Accion> findByOrderByIdAccionAsc();
 }

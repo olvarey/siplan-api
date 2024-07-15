@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.IndicadorRepo;
 @CrossOrigin(value = "*")
 public class IndicadorController {
 
-    @Autowired
-    private IndicadorRepo indicadorRepo;
+  @Autowired
+  private IndicadorRepo indicadorRepo;
 
-    @GetMapping(value = "indicadores")
-    private List<Indicador> getAllIndicadores() {
-        return indicadorRepo.findByOrderByIdIndicadorAsc();
-    }
+  @GetMapping(value = "indicadores")
+  private List<Indicador> getAllIndicadores() {
+    return indicadorRepo.findByOrderByIdIndicadorAsc();
+  }
 
-    @GetMapping(value = "indicadores/{idIndicador}")
-    private Optional<Indicador> getIndicadorById(@PathVariable Long idIndicador) {
-        return indicadorRepo.findById(idIndicador);
-    }
+  @GetMapping(value = "indicadores/{idIndicador}")
+  private Optional<Indicador> getIndicadorById(@PathVariable Long idIndicador) {
+    return indicadorRepo.findById(idIndicador);
+  }
 
-    @PostMapping(value = "indicadores")
-    public Indicador createIndicador(@RequestBody Indicador indicador) {
-        return indicadorRepo.save(indicador);
-    }
+  @PostMapping(value = "indicadores")
+  public Indicador createIndicador(@RequestBody Indicador indicador) {
+    return indicadorRepo.save(indicador);
+  }
 
-    @DeleteMapping(value = "indicadores")
-    public void deleteIndicador(@RequestBody Indicador indicador) {
-        indicadorRepo.delete(indicador);
-    }
+  @DeleteMapping(value = "indicadores")
+  public void deleteIndicador(@RequestBody Indicador indicador) {
+    indicadorRepo.delete(indicador);
+  }
 }

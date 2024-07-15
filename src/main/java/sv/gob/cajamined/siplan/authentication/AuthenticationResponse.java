@@ -8,10 +8,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public class AuthenticationResponse {
 
-	@Getter
-	private final String access_token;
+  @Getter
+  private final String access_token;
 
-	@Getter
-	private final Collection<String> roles;
+  @Getter
+  private final Collection<String> roles;
 
 }

@@ -25,17 +25,17 @@ import lombok.NoArgsConstructor;
 @Builder
 public class EstrategiaRiesgo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_estrategia_riesgo")
-    private Long idEstrategiaRiesgo;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_estrategia_riesgo")
+  private Long idEstrategiaRiesgo;
 
-    @Column(name = "nombre_estrategia_riesgo", length = 300, nullable = false)
-    private String nombreEstrategiaRiesgo;
+  @Column(name = "nombre_estrategia_riesgo", length = 300, nullable = false)
+  private String nombreEstrategiaRiesgo;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_riesgo", referencedColumnName = "id_riesgo", foreignKey = @ForeignKey(name = "fk_estrategia_riesgo_riesgo"))
-    private Riesgo riesgo;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_riesgo", referencedColumnName = "id_riesgo", foreignKey = @ForeignKey(name = "fk_estrategia_riesgo_riesgo"))
+  private Riesgo riesgo;
 }

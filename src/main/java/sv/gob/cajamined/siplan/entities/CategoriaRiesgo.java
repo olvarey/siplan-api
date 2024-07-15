@@ -27,17 +27,17 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CategoriaRiesgo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria_riesgo")
-    private Long idCategoriaRiesgo;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_categoria_riesgo")
+  private Long idCategoriaRiesgo;
 
-    @Column(name = "nombre_categoria_riesgo", length = 300, nullable = false)
-    private String nombreCategoriaRiesgo;
+  @Column(name = "nombre_categoria_riesgo", length = 300, nullable = false)
+  private String nombreCategoriaRiesgo;
 
-    @OneToMany(mappedBy = "categoriaRiesgo", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Riesgo> riesgoList;
+  @OneToMany(mappedBy = "categoriaRiesgo", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<Riesgo> riesgoList;
 }

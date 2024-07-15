@@ -26,42 +26,42 @@ import sv.gob.cajamined.siplan.enums.Mes;
 
 @Entity
 @Table(name = "seguimiento", schema = "siplan", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "id_accion", "mes" }, name = "unique_accion_mes") })
+  @UniqueConstraint(columnNames = {"id_accion", "mes"}, name = "unique_accion_mes")})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Seguimiento implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_seguimiento")
-	private Long idSeguimiento;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_seguimiento")
+  private Long idSeguimiento;
 
-	@Column(name = "detalle_seguimiento", length = 500, nullable = false)
-	private String detalleSeguimiento;
+  @Column(name = "detalle_seguimiento", length = 500, nullable = false)
+  private String detalleSeguimiento;
 
-	@Column(name = "presupuesto_ejecutado", nullable = false)
-	private double presupuestoEjecutado;
+  @Column(name = "presupuesto_ejecutado", nullable = false)
+  private double presupuestoEjecutado;
 
-	@Column(name = "numero_acciones_mensuales")
-	private Long numeroAccionesMensuales;
+  @Column(name = "numero_acciones_mensuales")
+  private Long numeroAccionesMensuales;
 
-	@Column(name = "ejecutado")
-	private Boolean ejecutado;
+  @Column(name = "ejecutado")
+  private Boolean ejecutado;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "mes", length = 100, nullable = false)
-	private Mes mes;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "mes", length = 100, nullable = false)
+  private Mes mes;
 
-	@Column(name = "fecha_ejecucion_seguimiento")
-	@Temporal(TemporalType.DATE)
-	private Date fechaEjecucionSeguimiento;
+  @Column(name = "fecha_ejecucion_seguimiento")
+  @Temporal(TemporalType.DATE)
+  private Date fechaEjecucionSeguimiento;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_accion", referencedColumnName = "id_accion", foreignKey = @ForeignKey(name = "fk_seguimiento_accion"))
-	private Accion accion;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_accion", referencedColumnName = "id_accion", foreignKey = @ForeignKey(name = "fk_seguimiento_accion"))
+  private Accion accion;
 
 }

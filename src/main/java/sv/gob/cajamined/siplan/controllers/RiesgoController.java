@@ -24,41 +24,41 @@ import sv.gob.cajamined.siplan.repositories.RiesgoRepo;
 @CrossOrigin(value = "*")
 public class RiesgoController {
 
-	@Autowired
-	private RiesgoRepo riesgoRepo;
+  @Autowired
+  private RiesgoRepo riesgoRepo;
 
-	@GetMapping(value = "riesgos")
-	private List<Riesgo> getAllRiesgos() {
-		return riesgoRepo.findByOrderByIdRiesgoAsc();
-	}
+  @GetMapping(value = "riesgos")
+  private List<Riesgo> getAllRiesgos() {
+    return riesgoRepo.findByOrderByIdRiesgoAsc();
+  }
 
-	@GetMapping(value = "riesgos/{idRiesgo}")
-	private Optional<Riesgo> getRiesgoById(@PathVariable Long idRiesgo) {
-		return riesgoRepo.findById(idRiesgo);
-	}
+  @GetMapping(value = "riesgos/{idRiesgo}")
+  private Optional<Riesgo> getRiesgoById(@PathVariable Long idRiesgo) {
+    return riesgoRepo.findById(idRiesgo);
+  }
 
-	@PostMapping(value = "riesgos")
-	public Riesgo createRiesgo(@RequestBody Riesgo riesgo) {
-		return riesgoRepo.save(riesgo);
-	}
+  @PostMapping(value = "riesgos")
+  public Riesgo createRiesgo(@RequestBody Riesgo riesgo) {
+    return riesgoRepo.save(riesgo);
+  }
 
-	@DeleteMapping(value = "riesgos")
-	public void deleteRiesgo(@RequestBody Riesgo riesgo) {
-		riesgoRepo.delete(riesgo);
-	}
+  @DeleteMapping(value = "riesgos")
+  public void deleteRiesgo(@RequestBody Riesgo riesgo) {
+    riesgoRepo.delete(riesgo);
+  }
 
-	@GetMapping(value = "riesgos/frecuencias")
-	public FrecuenciaDescripcion[] frecuencias() {
-		return FrecuenciaDescripcion.values();
-	}
+  @GetMapping(value = "riesgos/frecuencias")
+  public FrecuenciaDescripcion[] frecuencias() {
+    return FrecuenciaDescripcion.values();
+  }
 
-	@GetMapping(value = "riesgos/impactos")
-	public ImpactoDescripcion[] impactos() {
-		return ImpactoDescripcion.values();
-	}
+  @GetMapping(value = "riesgos/impactos")
+  public ImpactoDescripcion[] impactos() {
+    return ImpactoDescripcion.values();
+  }
 
-	@GetMapping(value = "riesgos/exposiciones")
-	public ExposicionDescripcion[] exposiciones() {
-		return ExposicionDescripcion.values();
-	}
+  @GetMapping(value = "riesgos/exposiciones")
+  public ExposicionDescripcion[] exposiciones() {
+    return ExposicionDescripcion.values();
+  }
 }

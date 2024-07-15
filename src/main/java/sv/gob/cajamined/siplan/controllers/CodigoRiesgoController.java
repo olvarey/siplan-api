@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.CodigoRiesgoRepo;
 @CrossOrigin(value = "*")
 public class CodigoRiesgoController {
 
-	@Autowired
-	private CodigoRiesgoRepo codigoRiesgoRepo;
+  @Autowired
+  private CodigoRiesgoRepo codigoRiesgoRepo;
 
-	@GetMapping(value = "codigos-riesgo")
-	private List<CodigoRiesgo> getAllCodigosRiesgo() {
-		return codigoRiesgoRepo.findByOrderByIdCodigoRiesgoAsc();
-	}
+  @GetMapping(value = "codigos-riesgo")
+  private List<CodigoRiesgo> getAllCodigosRiesgo() {
+    return codigoRiesgoRepo.findByOrderByIdCodigoRiesgoAsc();
+  }
 
-	@GetMapping(value = "codigos-riesgo/{idCodigoRiesgo}")
-	private Optional<CodigoRiesgo> getCodigoRiesgoById(@PathVariable Long idCodigoRiesgo) {
-		return codigoRiesgoRepo.findById(idCodigoRiesgo);
-	}
+  @GetMapping(value = "codigos-riesgo/{idCodigoRiesgo}")
+  private Optional<CodigoRiesgo> getCodigoRiesgoById(@PathVariable Long idCodigoRiesgo) {
+    return codigoRiesgoRepo.findById(idCodigoRiesgo);
+  }
 
-	@PostMapping(value = "codigos-riesgo")
-	public CodigoRiesgo createCodigoRiesgo(@RequestBody CodigoRiesgo codigoRiesgo) {
-		return codigoRiesgoRepo.save(codigoRiesgo);
-	}
+  @PostMapping(value = "codigos-riesgo")
+  public CodigoRiesgo createCodigoRiesgo(@RequestBody CodigoRiesgo codigoRiesgo) {
+    return codigoRiesgoRepo.save(codigoRiesgo);
+  }
 
-	@DeleteMapping(value = "codigos-riesgo")
-	public void deleteCodigoRiesgo(@RequestBody CodigoRiesgo codigoRiesgo) {
-		codigoRiesgoRepo.delete(codigoRiesgo);
-	}
+  @DeleteMapping(value = "codigos-riesgo")
+  public void deleteCodigoRiesgo(@RequestBody CodigoRiesgo codigoRiesgo) {
+    codigoRiesgoRepo.delete(codigoRiesgo);
+  }
 }

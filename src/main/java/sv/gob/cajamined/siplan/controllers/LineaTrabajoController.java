@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.LineaTrabajoRepo;
 @CrossOrigin(value = "*")
 public class LineaTrabajoController {
 
-	@Autowired
-	private LineaTrabajoRepo lineaTrabajoRepo;
+  @Autowired
+  private LineaTrabajoRepo lineaTrabajoRepo;
 
-	@GetMapping(value = "lineas-trabajo")
-	private List<LineaTrabajo> getAllLineasTrabajo() {
-		return lineaTrabajoRepo.findByOrderByIdLineaTrabajoAsc();
-	}
+  @GetMapping(value = "lineas-trabajo")
+  private List<LineaTrabajo> getAllLineasTrabajo() {
+    return lineaTrabajoRepo.findByOrderByIdLineaTrabajoAsc();
+  }
 
-	@GetMapping(value = "lineas-trabajo/{idLineaTrabajo}")
-	private Optional<LineaTrabajo> getLineaTrabajoById(@PathVariable Long idLineaTrabajo) {
-		return lineaTrabajoRepo.findById(idLineaTrabajo);
-	}
+  @GetMapping(value = "lineas-trabajo/{idLineaTrabajo}")
+  private Optional<LineaTrabajo> getLineaTrabajoById(@PathVariable Long idLineaTrabajo) {
+    return lineaTrabajoRepo.findById(idLineaTrabajo);
+  }
 
-	@PostMapping(value = "lineas-trabajo")
-	public LineaTrabajo createLineaTrabajo(@RequestBody LineaTrabajo lineaTrabajo) {
-		return lineaTrabajoRepo.save(lineaTrabajo);
-	}
+  @PostMapping(value = "lineas-trabajo")
+  public LineaTrabajo createLineaTrabajo(@RequestBody LineaTrabajo lineaTrabajo) {
+    return lineaTrabajoRepo.save(lineaTrabajo);
+  }
 
-	@DeleteMapping(value = "lineas-trabajo")
-	public void deleteLineaTrabajo(@RequestBody LineaTrabajo lineaTrabajo) {
-		lineaTrabajoRepo.delete(lineaTrabajo);
-	}
+  @DeleteMapping(value = "lineas-trabajo")
+  public void deleteLineaTrabajo(@RequestBody LineaTrabajo lineaTrabajo) {
+    lineaTrabajoRepo.delete(lineaTrabajo);
+  }
 }

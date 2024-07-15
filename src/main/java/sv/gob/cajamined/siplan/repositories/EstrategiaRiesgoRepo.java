@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.EstrategiaRiesgo;
 
 @Repository
 public interface EstrategiaRiesgoRepo extends JpaRepository<EstrategiaRiesgo, Long> {
-    List<EstrategiaRiesgo> findByOrderByIdEstrategiaRiesgo();
+
+  List<EstrategiaRiesgo> findByOrderByIdEstrategiaRiesgo();
 }

@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.CodigoRiesgo;
 
 @Repository
 public interface CodigoRiesgoRepo extends JpaRepository<CodigoRiesgo, Long> {
-    List<CodigoRiesgo> findByOrderByIdCodigoRiesgoAsc();
+
+  List<CodigoRiesgo> findByOrderByIdCodigoRiesgoAsc();
 }

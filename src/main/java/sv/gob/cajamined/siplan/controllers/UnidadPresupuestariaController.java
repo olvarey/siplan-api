@@ -21,26 +21,28 @@ import sv.gob.cajamined.siplan.repositories.UnidadPresupuestariaRepo;
 @CrossOrigin(value = "*")
 public class UnidadPresupuestariaController {
 
-	@Autowired
-	private UnidadPresupuestariaRepo unidadPresupuestariaRepo;
+  @Autowired
+  private UnidadPresupuestariaRepo unidadPresupuestariaRepo;
 
-	@GetMapping(value = "unidades-presupuestarias")
-	private List<UnidadPresupuestaria> getAllUnidadesPresupuestarias() {
-		return unidadPresupuestariaRepo.findByOrderByIdUnidadPresupuestariaAsc();
-	}
+  @GetMapping(value = "unidades-presupuestarias")
+  private List<UnidadPresupuestaria> getAllUnidadesPresupuestarias() {
+    return unidadPresupuestariaRepo.findByOrderByIdUnidadPresupuestariaAsc();
+  }
 
-	@GetMapping(value = "unidades-presupuestarias/{idUnidadPresupuestaria}")
-	private Optional<UnidadPresupuestaria> getUnidadPresupuestariaById(@PathVariable Long idUnidadPresupuestaria) {
-		return unidadPresupuestariaRepo.findById(idUnidadPresupuestaria);
-	}
+  @GetMapping(value = "unidades-presupuestarias/{idUnidadPresupuestaria}")
+  private Optional<UnidadPresupuestaria> getUnidadPresupuestariaById(
+    @PathVariable Long idUnidadPresupuestaria) {
+    return unidadPresupuestariaRepo.findById(idUnidadPresupuestaria);
+  }
 
-	@PostMapping(value = "unidades-presupuestarias")
-	public UnidadPresupuestaria createUnidadPresupuestaria(@RequestBody UnidadPresupuestaria unidadPresupuestaria) {
-		return unidadPresupuestariaRepo.save(unidadPresupuestaria);
-	}
+  @PostMapping(value = "unidades-presupuestarias")
+  public UnidadPresupuestaria createUnidadPresupuestaria(
+    @RequestBody UnidadPresupuestaria unidadPresupuestaria) {
+    return unidadPresupuestariaRepo.save(unidadPresupuestaria);
+  }
 
-	@DeleteMapping(value = "unidades-presupuestarias")
-	public void deleteUnidadPresupuestaria(@RequestBody UnidadPresupuestaria unidadPresupuestaria) {
-		unidadPresupuestariaRepo.delete(unidadPresupuestaria);
-	}
+  @DeleteMapping(value = "unidades-presupuestarias")
+  public void deleteUnidadPresupuestaria(@RequestBody UnidadPresupuestaria unidadPresupuestaria) {
+    unidadPresupuestariaRepo.delete(unidadPresupuestaria);
+  }
 }

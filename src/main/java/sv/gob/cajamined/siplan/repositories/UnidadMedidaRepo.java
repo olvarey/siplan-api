@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface UnidadMedidaRepo extends JpaRepository<UnidadMedida, Long> {
-    List<UnidadMedida> findByOrderByIdUnidadMedidaAsc();
+
+  List<UnidadMedida> findByOrderByIdUnidadMedidaAsc();
 }

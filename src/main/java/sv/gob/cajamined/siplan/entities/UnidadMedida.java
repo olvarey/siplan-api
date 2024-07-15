@@ -18,21 +18,21 @@ import java.util.List;
 @Builder
 public class UnidadMedida implements Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_unidad_medida")
-    private Long idUnidadMedida;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_unidad_medida")
+  private Long idUnidadMedida;
 
-    @Column(name = "nombre_unidad_medida", nullable = false, length = 300)
-    private String nombreUnidadMedida;
+  @Column(name = "nombre_unidad_medida", nullable = false, length = 300)
+  private String nombreUnidadMedida;
 
-    @OneToMany(mappedBy = "unidadMedida", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Indicador> indicadorList;
+  @OneToMany(mappedBy = "unidadMedida", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<Indicador> indicadorList;
 
 }

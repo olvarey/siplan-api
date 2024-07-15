@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.SeguimientoRiesgo;
 
 @Repository
 public interface SeguimientoRiesgoRepo extends JpaRepository<SeguimientoRiesgo, Long> {
-    List<SeguimientoRiesgo> findByOrderByIdSeguimientoRiesgoAsc();
+
+  List<SeguimientoRiesgo> findByOrderByIdSeguimientoRiesgoAsc();
 }

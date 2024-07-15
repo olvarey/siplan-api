@@ -27,34 +27,34 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Organizacion implements Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_organizacion")
-    private Long idOrganizacion;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_organizacion")
+  private Long idOrganizacion;
 
-    @Column(name = "nombre_organizacion", nullable = false, length = 500)
-    private String nombreOrganizacion;
+  @Column(name = "nombre_organizacion", nullable = false, length = 500)
+  private String nombreOrganizacion;
 
-    @Column(name = "descripcion_organizacion", length = 500)
-    private String descripcionOrganizacion;
+  @Column(name = "descripcion_organizacion", length = 500)
+  private String descripcionOrganizacion;
 
-    @Column(name = "mision_organizacion", length = 500)
-    private String misionOrganizacion;
+  @Column(name = "mision_organizacion", length = 500)
+  private String misionOrganizacion;
 
-    @Column(name = "vision_organizacion", length = 500)
-    private String visionOrganizacion;
+  @Column(name = "vision_organizacion", length = 500)
+  private String visionOrganizacion;
 
-    @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Objetivo> objetivoList;
+  @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<Objetivo> objetivoList;
 
-    @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<UnidadOrganizativa> unidadOrganizativaList;
+  @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private List<UnidadOrganizativa> unidadOrganizativaList;
 
 }

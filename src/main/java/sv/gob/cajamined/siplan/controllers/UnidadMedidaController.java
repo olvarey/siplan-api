@@ -13,26 +13,26 @@ import java.util.Optional;
 @CrossOrigin(value = "*")
 public class UnidadMedidaController {
 
-    @Autowired
-    private UnidadMedidaRepo unidadMedidaRepo;
+  @Autowired
+  private UnidadMedidaRepo unidadMedidaRepo;
 
-    @GetMapping(value = "unidades-medida")
-    private List<UnidadMedida> getAllUnidadesMedida() {
-        return unidadMedidaRepo.findByOrderByIdUnidadMedidaAsc();
-    }
+  @GetMapping(value = "unidades-medida")
+  private List<UnidadMedida> getAllUnidadesMedida() {
+    return unidadMedidaRepo.findByOrderByIdUnidadMedidaAsc();
+  }
 
-    @GetMapping(value = "unidades-medida/{idUnidadMedida}")
-    private Optional<UnidadMedida> getUnidadMedidaById(@PathVariable Long idUnidadMedida) {
-        return unidadMedidaRepo.findById(idUnidadMedida);
-    }
+  @GetMapping(value = "unidades-medida/{idUnidadMedida}")
+  private Optional<UnidadMedida> getUnidadMedidaById(@PathVariable Long idUnidadMedida) {
+    return unidadMedidaRepo.findById(idUnidadMedida);
+  }
 
-    @PostMapping(value = "unidades-medida")
-    public UnidadMedida createUnidadMedida(@RequestBody UnidadMedida unidadMedida) {
-        return unidadMedidaRepo.save(unidadMedida);
-    }
+  @PostMapping(value = "unidades-medida")
+  public UnidadMedida createUnidadMedida(@RequestBody UnidadMedida unidadMedida) {
+    return unidadMedidaRepo.save(unidadMedida);
+  }
 
-    @DeleteMapping(value = "unidades-medida")
-    public void deleteUnidadMedida(@RequestBody UnidadMedida unidadMedida) {
-        unidadMedidaRepo.delete(unidadMedida);
-    }
+  @DeleteMapping(value = "unidades-medida")
+  public void deleteUnidadMedida(@RequestBody UnidadMedida unidadMedida) {
+    unidadMedidaRepo.delete(unidadMedida);
+  }
 }

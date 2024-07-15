@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.Organizacion;
 
 @Repository
 public interface OrganizacionRepo extends JpaRepository<Organizacion, Long> {
-	List<Organizacion> findByOrderByIdOrganizacionAsc();
+
+  List<Organizacion> findByOrderByIdOrganizacionAsc();
 }

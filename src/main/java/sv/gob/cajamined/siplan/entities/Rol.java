@@ -14,16 +14,16 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Rol implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_rol")
-	private Long idRol;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_rol")
+  private Long idRol;
 
-	@Column(name = "nombre_rol", length = 300, nullable = false)
-	private String nombreRol;
+  @Column(name = "nombre_rol", length = 300, nullable = false)
+  private String nombreRol;
 }

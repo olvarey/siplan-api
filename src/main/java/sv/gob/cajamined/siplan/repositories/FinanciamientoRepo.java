@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.Financiamiento;
 
 @Repository
 public interface FinanciamientoRepo extends JpaRepository<Financiamiento, Long> {
-	List<Financiamiento> findByOrderByIdFinanciamientoAsc();
+
+  List<Financiamiento> findByOrderByIdFinanciamientoAsc();
 }

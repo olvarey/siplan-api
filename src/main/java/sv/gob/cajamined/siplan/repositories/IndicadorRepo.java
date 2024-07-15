@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface IndicadorRepo extends JpaRepository<Indicador, Long> {
-    List<Indicador> findByOrderByIdIndicadorAsc();
+
+  List<Indicador> findByOrderByIdIndicadorAsc();
 }

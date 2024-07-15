@@ -22,31 +22,31 @@ import sv.gob.cajamined.siplan.repositories.SeguimientoRepo;
 @CrossOrigin(value = "*")
 public class SeguimientoController {
 
-	@Autowired
-	private SeguimientoRepo seguimientoRepo;
+  @Autowired
+  private SeguimientoRepo seguimientoRepo;
 
-	@GetMapping(value = "seguimientos")
-	private List<Seguimiento> getAllAnios() {
-		return seguimientoRepo.findByOrderByIdSeguimientoAsc();
-	}
+  @GetMapping(value = "seguimientos")
+  private List<Seguimiento> getAllAnios() {
+    return seguimientoRepo.findByOrderByIdSeguimientoAsc();
+  }
 
-	@GetMapping(value = "seguimientos/{idSeguimiento}")
-	private Optional<Seguimiento> getAnioById(@PathVariable Long idSeguimiento) {
-		return seguimientoRepo.findById(idSeguimiento);
-	}
+  @GetMapping(value = "seguimientos/{idSeguimiento}")
+  private Optional<Seguimiento> getAnioById(@PathVariable Long idSeguimiento) {
+    return seguimientoRepo.findById(idSeguimiento);
+  }
 
-	@PostMapping(value = "seguimientos")
-	public Seguimiento createAnio(@RequestBody Seguimiento seguimiento) {
-		return seguimientoRepo.save(seguimiento);
-	}
+  @PostMapping(value = "seguimientos")
+  public Seguimiento createAnio(@RequestBody Seguimiento seguimiento) {
+    return seguimientoRepo.save(seguimiento);
+  }
 
-	@DeleteMapping(value = "seguimientos")
-	public void deleteAnio(@RequestBody Seguimiento seguimiento) {
-		seguimientoRepo.delete(seguimiento);
-	}
+  @DeleteMapping(value = "seguimientos")
+  public void deleteAnio(@RequestBody Seguimiento seguimiento) {
+    seguimientoRepo.delete(seguimiento);
+  }
 
-	@GetMapping(value = "seguimientos/meses")
-	public Mes[] meses() {
-		return Mes.values();
-	}
+  @GetMapping(value = "seguimientos/meses")
+  public Mes[] meses() {
+    return Mes.values();
+  }
 }

@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.UnidadPresupuestaria;
 
 @Repository
 public interface UnidadPresupuestariaRepo extends JpaRepository<UnidadPresupuestaria, Long> {
-	List<UnidadPresupuestaria> findByOrderByIdUnidadPresupuestariaAsc();
+
+  List<UnidadPresupuestaria> findByOrderByIdUnidadPresupuestariaAsc();
 }

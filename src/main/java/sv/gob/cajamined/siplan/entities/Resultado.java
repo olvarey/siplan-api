@@ -30,39 +30,39 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Resultado implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_resultado")
-	private Long idResultado;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_resultado")
+  private Long idResultado;
 
-	@Column(name = "nombre_resultado", length = 500, nullable = false)
-	private String nombreResultado;
+  @Column(name = "nombre_resultado", length = 500, nullable = false)
+  private String nombreResultado;
 
-	@Column(name = "descripcion_resultado", length = 500)
-	private String descripcionResultado;
+  @Column(name = "descripcion_resultado", length = 500)
+  private String descripcionResultado;
 
-	@Column(name = "nombre_responsable_resultado", length = 500)
-	private String nombreResponsableResultado;
+  @Column(name = "nombre_responsable_resultado", length = 500)
+  private String nombreResponsableResultado;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_eje", referencedColumnName = "id_eje", foreignKey = @ForeignKey(name = "fk_eje_resultado"))
-	private Eje eje;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_eje", referencedColumnName = "id_eje", foreignKey = @ForeignKey(name = "fk_eje_resultado"))
+  private Eje eje;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_indicador", referencedColumnName = "id_indicador", foreignKey = @ForeignKey(name = "fk_resultado_indicador"))
-	private Indicador indicador;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_indicador", referencedColumnName = "id_indicador", foreignKey = @ForeignKey(name = "fk_resultado_indicador"))
+  private Indicador indicador;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_anio", referencedColumnName = "id_anio", foreignKey = @ForeignKey(name = "fk_resultado_anio"))
-	private Anio anio;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "id_anio", referencedColumnName = "id_anio", foreignKey = @ForeignKey(name = "fk_resultado_anio"))
+  private Anio anio;
 
-	@OneToMany(mappedBy = "resultado", cascade = CascadeType.ALL)
-	@JsonIgnore
-	public List<Accion> accionList;
+  @OneToMany(mappedBy = "resultado", cascade = CascadeType.ALL)
+  @JsonIgnore
+  public List<Accion> accionList;
 
 }

@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.TipoObjetivoRepo;
 @CrossOrigin(value = "*")
 public class TipoObjetivoController {
 
-	@Autowired
-	private TipoObjetivoRepo tipoObjetivoRepo;
+  @Autowired
+  private TipoObjetivoRepo tipoObjetivoRepo;
 
-	@GetMapping(value = "tipos-objetivo")
-	private List<TipoObjetivo> getAllTiposObjetivos() {
-		return tipoObjetivoRepo.findByOrderByIdTipoObjetivoAsc();
-	}
+  @GetMapping(value = "tipos-objetivo")
+  private List<TipoObjetivo> getAllTiposObjetivos() {
+    return tipoObjetivoRepo.findByOrderByIdTipoObjetivoAsc();
+  }
 
-	@GetMapping(value = "tipos-objetivo/{idTipoObjetivo}")
-	private Optional<TipoObjetivo> getTipoObjetivoById(@PathVariable Long idTipoObjetivo) {
-		return tipoObjetivoRepo.findById(idTipoObjetivo);
-	}
+  @GetMapping(value = "tipos-objetivo/{idTipoObjetivo}")
+  private Optional<TipoObjetivo> getTipoObjetivoById(@PathVariable Long idTipoObjetivo) {
+    return tipoObjetivoRepo.findById(idTipoObjetivo);
+  }
 
-	@PostMapping(value = "tipos-objetivo")
-	public TipoObjetivo createTipoObjetivo(@RequestBody TipoObjetivo tipoObjetivo) {
-		return tipoObjetivoRepo.save(tipoObjetivo);
-	}
+  @PostMapping(value = "tipos-objetivo")
+  public TipoObjetivo createTipoObjetivo(@RequestBody TipoObjetivo tipoObjetivo) {
+    return tipoObjetivoRepo.save(tipoObjetivo);
+  }
 
-	@DeleteMapping(value = "tipos-objetivo")
-	public void deleteTipoObjetivo(@RequestBody TipoObjetivo tipoObjetivo) {
-		tipoObjetivoRepo.delete(tipoObjetivo);
-	}
+  @DeleteMapping(value = "tipos-objetivo")
+  public void deleteTipoObjetivo(@RequestBody TipoObjetivo tipoObjetivo) {
+    tipoObjetivoRepo.delete(tipoObjetivo);
+  }
 }

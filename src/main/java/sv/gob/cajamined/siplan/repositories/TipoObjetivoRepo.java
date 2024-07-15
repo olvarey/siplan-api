@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.TipoObjetivo;
 
 @Repository
 public interface TipoObjetivoRepo extends JpaRepository<TipoObjetivo, Long> {
-	List<TipoObjetivo> findByOrderByIdTipoObjetivoAsc();
+
+  List<TipoObjetivo> findByOrderByIdTipoObjetivoAsc();
 }

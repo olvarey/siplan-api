@@ -21,27 +21,27 @@ import sv.gob.cajamined.siplan.repositories.ResultadoRepo;
 @CrossOrigin(value = "*")
 public class ResultadoController {
 
-	@Autowired
-	private ResultadoRepo resultadoRepo;
+  @Autowired
+  private ResultadoRepo resultadoRepo;
 
-	@GetMapping(value = "resultados")
-	private List<Resultado> getAllResultados() {
-		return resultadoRepo.findByOrderByIdResultadoAsc();
-	}
+  @GetMapping(value = "resultados")
+  private List<Resultado> getAllResultados() {
+    return resultadoRepo.findByOrderByIdResultadoAsc();
+  }
 
-	@GetMapping(value = "resultados/{idResultado}")
-	private Optional<Resultado> getResultadoById(@PathVariable Long idResultado) {
-		return resultadoRepo.findById(idResultado);
-	}
+  @GetMapping(value = "resultados/{idResultado}")
+  private Optional<Resultado> getResultadoById(@PathVariable Long idResultado) {
+    return resultadoRepo.findById(idResultado);
+  }
 
-	@PostMapping(value = "resultados")
-	public Resultado createResultado(@RequestBody Resultado resultado) {
-		return resultadoRepo.save(resultado);
-	}
+  @PostMapping(value = "resultados")
+  public Resultado createResultado(@RequestBody Resultado resultado) {
+    return resultadoRepo.save(resultado);
+  }
 
-	@DeleteMapping(value = "resultados")
-	public void deleteResultado(@RequestBody Resultado resultado) {
-		resultadoRepo.delete(resultado);
-	}
+  @DeleteMapping(value = "resultados")
+  public void deleteResultado(@RequestBody Resultado resultado) {
+    resultadoRepo.delete(resultado);
+  }
 
 }

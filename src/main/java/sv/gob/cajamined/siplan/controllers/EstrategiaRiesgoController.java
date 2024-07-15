@@ -21,26 +21,27 @@ import sv.gob.cajamined.siplan.repositories.EstrategiaRiesgoRepo;
 @CrossOrigin(value = "*")
 public class EstrategiaRiesgoController {
 
-	@Autowired
-	private EstrategiaRiesgoRepo estrategiaRiesgoRepo;
+  @Autowired
+  private EstrategiaRiesgoRepo estrategiaRiesgoRepo;
 
-	@GetMapping(value = "estrategias-riesgo")
-	private List<EstrategiaRiesgo> getAllEstrategiasRiesgo() {
-		return estrategiaRiesgoRepo.findByOrderByIdEstrategiaRiesgo();
-	}
+  @GetMapping(value = "estrategias-riesgo")
+  private List<EstrategiaRiesgo> getAllEstrategiasRiesgo() {
+    return estrategiaRiesgoRepo.findByOrderByIdEstrategiaRiesgo();
+  }
 
-	@GetMapping(value = "estrategias-riesgo/{idEstrategiaRiesgo}")
-	private Optional<EstrategiaRiesgo> getEstrategiaRiesgoById(@PathVariable Long idEstrategiaRiesgo) {
-		return estrategiaRiesgoRepo.findById(idEstrategiaRiesgo);
-	}
+  @GetMapping(value = "estrategias-riesgo/{idEstrategiaRiesgo}")
+  private Optional<EstrategiaRiesgo> getEstrategiaRiesgoById(
+    @PathVariable Long idEstrategiaRiesgo) {
+    return estrategiaRiesgoRepo.findById(idEstrategiaRiesgo);
+  }
 
-	@PostMapping(value = "estrategias-riesgo")
-	public EstrategiaRiesgo createEstrategiaRiesgo(@RequestBody EstrategiaRiesgo estrategiaRiesgo) {
-		return estrategiaRiesgoRepo.save(estrategiaRiesgo);
-	}
+  @PostMapping(value = "estrategias-riesgo")
+  public EstrategiaRiesgo createEstrategiaRiesgo(@RequestBody EstrategiaRiesgo estrategiaRiesgo) {
+    return estrategiaRiesgoRepo.save(estrategiaRiesgo);
+  }
 
-	@DeleteMapping(value = "estrategias-riesgo")
-	public void deleteEstrategiaRiesgo(@RequestBody EstrategiaRiesgo estrategiaRiesgo) {
-		estrategiaRiesgoRepo.delete(estrategiaRiesgo);
-	}
+  @DeleteMapping(value = "estrategias-riesgo")
+  public void deleteEstrategiaRiesgo(@RequestBody EstrategiaRiesgo estrategiaRiesgo) {
+    estrategiaRiesgoRepo.delete(estrategiaRiesgo);
+  }
 }

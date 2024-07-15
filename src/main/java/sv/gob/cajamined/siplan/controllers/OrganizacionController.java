@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.OrganizacionRepo;
 @CrossOrigin(value = "*")
 public class OrganizacionController {
 
-	@Autowired
-	private OrganizacionRepo organizacionRepo;
+  @Autowired
+  private OrganizacionRepo organizacionRepo;
 
-	@GetMapping(value = "organizaciones")
-	private List<Organizacion> getAllOrganizaciones() {
-		return organizacionRepo.findByOrderByIdOrganizacionAsc();
-	}
+  @GetMapping(value = "organizaciones")
+  private List<Organizacion> getAllOrganizaciones() {
+    return organizacionRepo.findByOrderByIdOrganizacionAsc();
+  }
 
-	@GetMapping(value = "organizaciones/{idOrganizacion}")
-	private Optional<Organizacion> getOrganizacionById(@PathVariable Long idOrganizacion) {
-		return organizacionRepo.findById(idOrganizacion);
-	}
+  @GetMapping(value = "organizaciones/{idOrganizacion}")
+  private Optional<Organizacion> getOrganizacionById(@PathVariable Long idOrganizacion) {
+    return organizacionRepo.findById(idOrganizacion);
+  }
 
-	@PostMapping(value = "organizaciones")
-	public Organizacion createOrganizacion(@RequestBody Organizacion organizacion) {
-		return organizacionRepo.save(organizacion);
-	}
+  @PostMapping(value = "organizaciones")
+  public Organizacion createOrganizacion(@RequestBody Organizacion organizacion) {
+    return organizacionRepo.save(organizacion);
+  }
 
-	@DeleteMapping(value = "organizaciones")
-	public void deleteOrganizacion(@RequestBody Organizacion organizacion) {
-		organizacionRepo.delete(organizacion);
-	}
+  @DeleteMapping(value = "organizaciones")
+  public void deleteOrganizacion(@RequestBody Organizacion organizacion) {
+    organizacionRepo.delete(organizacion);
+  }
 }

@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.Eje;
 
 @Repository
 public interface EjeRepo extends JpaRepository<Eje, Long> {
-	List<Eje> findByOrderByIdEjeAsc();
+
+  List<Eje> findByOrderByIdEjeAsc();
 }

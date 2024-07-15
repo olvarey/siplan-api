@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.Anio;
 
 @Repository
 public interface AnioRepo extends JpaRepository<Anio, Long> {
-	List<Anio> findByOrderByIdAnioAsc();
+
+  List<Anio> findByOrderByIdAnioAsc();
 }

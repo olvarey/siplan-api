@@ -9,10 +9,10 @@ import java.util.List;
 @Repository
 public interface ObjetivoRepo extends JpaRepository<Objetivo, Long> {
 
-	List<Objetivo> findByTipoObjetivoIdTipoObjetivo(Long idTipoObjetivo);
+  List<Objetivo> findByTipoObjetivoIdTipoObjetivo(Long idTipoObjetivo);
 
-	List<Objetivo> findByOrganizacionIdOrganizacion(Long idOrganizacion);
+  List<Objetivo> findByOrganizacionIdOrganizacion(Long idOrganizacion);
 
-	List<Objetivo> findByOrderByIdObjetivoAsc();
+  List<Objetivo> findByOrderByIdObjetivoAsc();
 
 }

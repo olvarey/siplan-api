@@ -22,31 +22,31 @@ import sv.gob.cajamined.siplan.repositories.AccionRepo;
 @CrossOrigin(value = "*")
 public class AccionController {
 
-	@Autowired
-	private AccionRepo accionRepo;
+  @Autowired
+  private AccionRepo accionRepo;
 
-	@GetMapping(value = "acciones")
-	private List<Accion> getAllAnios() {
-		return accionRepo.findByOrderByIdAccionAsc();
-	}
+  @GetMapping(value = "acciones")
+  private List<Accion> getAllAnios() {
+    return accionRepo.findByOrderByIdAccionAsc();
+  }
 
-	@GetMapping(value = "acciones/{idAccion}")
-	private Optional<Accion> getAnioById(@PathVariable Long idAccion) {
-		return accionRepo.findById(idAccion);
-	}
+  @GetMapping(value = "acciones/{idAccion}")
+  private Optional<Accion> getAnioById(@PathVariable Long idAccion) {
+    return accionRepo.findById(idAccion);
+  }
 
-	@PostMapping(value = "acciones")
-	public Accion createAnio(@RequestBody Accion accion) {
-		return accionRepo.save(accion);
-	}
+  @PostMapping(value = "acciones")
+  public Accion createAnio(@RequestBody Accion accion) {
+    return accionRepo.save(accion);
+  }
 
-	@DeleteMapping(value = "acciones")
-	public void deleteAnio(@RequestBody Accion accion) {
-		accionRepo.delete(accion);
-	}
+  @DeleteMapping(value = "acciones")
+  public void deleteAnio(@RequestBody Accion accion) {
+    accionRepo.delete(accion);
+  }
 
-	@GetMapping(value = "acciones/meses")
-	public Mes[] meses() {
-		return Mes.values();
-	}
+  @GetMapping(value = "acciones/meses")
+  public Mes[] meses() {
+    return Mes.values();
+  }
 }

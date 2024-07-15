@@ -21,26 +21,26 @@ import sv.gob.cajamined.siplan.repositories.CategoriaRiesgoRepo;
 @CrossOrigin(value = "*")
 public class CategoriaRiesgoController {
 
-	@Autowired
-	private CategoriaRiesgoRepo categoriaRiesgoRepo;
+  @Autowired
+  private CategoriaRiesgoRepo categoriaRiesgoRepo;
 
-	@GetMapping(value = "categorias-riesgo")
-	private List<CategoriaRiesgo> getAllCategoriasRiesgo() {
-		return categoriaRiesgoRepo.findByOrderByIdCategoriaRiesgoAsc();
-	}
+  @GetMapping(value = "categorias-riesgo")
+  private List<CategoriaRiesgo> getAllCategoriasRiesgo() {
+    return categoriaRiesgoRepo.findByOrderByIdCategoriaRiesgoAsc();
+  }
 
-	@GetMapping(value = "categorias-riesgo/{idCategoriaRiesgo}")
-	private Optional<CategoriaRiesgo> getCategoriaRiesgoById(@PathVariable Long idCategoriaRiesgo) {
-		return categoriaRiesgoRepo.findById(idCategoriaRiesgo);
-	}
+  @GetMapping(value = "categorias-riesgo/{idCategoriaRiesgo}")
+  private Optional<CategoriaRiesgo> getCategoriaRiesgoById(@PathVariable Long idCategoriaRiesgo) {
+    return categoriaRiesgoRepo.findById(idCategoriaRiesgo);
+  }
 
-	@PostMapping(value = "categorias-riesgo")
-	public CategoriaRiesgo createCategoriaRiesgo(@RequestBody CategoriaRiesgo categoriaRiesgo) {
-		return categoriaRiesgoRepo.save(categoriaRiesgo);
-	}
+  @PostMapping(value = "categorias-riesgo")
+  public CategoriaRiesgo createCategoriaRiesgo(@RequestBody CategoriaRiesgo categoriaRiesgo) {
+    return categoriaRiesgoRepo.save(categoriaRiesgo);
+  }
 
-	@DeleteMapping(value = "categorias-riesgo")
-	public void deleteCategoriaRiesgo(@RequestBody CategoriaRiesgo categoriaRiesgo) {
-		categoriaRiesgoRepo.delete(categoriaRiesgo);
-	}
+  @DeleteMapping(value = "categorias-riesgo")
+  public void deleteCategoriaRiesgo(@RequestBody CategoriaRiesgo categoriaRiesgo) {
+    categoriaRiesgoRepo.delete(categoriaRiesgo);
+  }
 }

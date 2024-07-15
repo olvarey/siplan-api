@@ -9,5 +9,6 @@ import sv.gob.cajamined.siplan.entities.LineaTrabajo;
 
 @Repository
 public interface LineaTrabajoRepo extends JpaRepository<LineaTrabajo, Long> {
-	List<LineaTrabajo> findByOrderByIdLineaTrabajoAsc();
+
+  List<LineaTrabajo> findByOrderByIdLineaTrabajoAsc();
 }

@@ -21,27 +21,27 @@ import sv.gob.cajamined.siplan.repositories.EjeRepo;
 @CrossOrigin(value = "*")
 public class EjeController {
 
-	@Autowired
-	private EjeRepo ejeRepo;
+  @Autowired
+  private EjeRepo ejeRepo;
 
-	@GetMapping(value = "ejes")
-	private List<Eje> getAllEjes() {
-		return ejeRepo.findByOrderByIdEjeAsc();
-	}
+  @GetMapping(value = "ejes")
+  private List<Eje> getAllEjes() {
+    return ejeRepo.findByOrderByIdEjeAsc();
+  }
 
-	@GetMapping(value = "ejes/{idEje}")
-	private Optional<Eje> getEjeById(@PathVariable Long idEje) {
-		return ejeRepo.findById(idEje);
-	}
+  @GetMapping(value = "ejes/{idEje}")
+  private Optional<Eje> getEjeById(@PathVariable Long idEje) {
+    return ejeRepo.findById(idEje);
+  }
 
-	@PostMapping(value = "ejes")
-	public Eje createEje(@RequestBody Eje eje) {
-		return ejeRepo.save(eje);
-	}
+  @PostMapping(value = "ejes")
+  public Eje createEje(@RequestBody Eje eje) {
+    return ejeRepo.save(eje);
+  }
 
-	@DeleteMapping(value = "ejes")
-	public void deleteEje(@RequestBody Eje eje) {
-		ejeRepo.delete(eje);
-	}
+  @DeleteMapping(value = "ejes")
+  public void deleteEje(@RequestBody Eje eje) {
+    ejeRepo.delete(eje);
+  }
 
 }

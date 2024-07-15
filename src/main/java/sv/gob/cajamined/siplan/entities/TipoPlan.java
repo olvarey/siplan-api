@@ -17,20 +17,20 @@ import java.util.List;
 @Builder
 public class TipoPlan implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_tipo_plan")
-	private Long idTipoPlan;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_tipo_plan")
+  private Long idTipoPlan;
 
-	@Column(name = "nombre_tipo_plan", length = 300, nullable = false)
-	private String nombreTipoPlan;
+  @Column(name = "nombre_tipo_plan", length = 300, nullable = false)
+  private String nombreTipoPlan;
 
-	@OneToMany(mappedBy = "tipoPlan", cascade = CascadeType.ALL)
-	private List<Plan> planList;
+  @OneToMany(mappedBy = "tipoPlan", cascade = CascadeType.ALL)
+  private List<Plan> planList;
 
 }
