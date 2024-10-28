@@ -7,9 +7,9 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: "jdbc:postgresql://localhost/ISDEMU"
+    url: "jdbc:postgresql://<IP>"
     username: postgres
-    password: Fathima13$
+    password: 
     driverClassName: org.postgresql.Driver
   jpa:
     properties:
@@ -24,9 +24,9 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: "jdbc:postgresql://localhost/CAJAMINED"
+    url: "jdbc:postgresql://<IP>"
     username: postgres
-    password: Fathima13$
+    password: 
     driverClassName: org.postgresql.Driver
   jpa:
     properties:
